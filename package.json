@@ -18,7 +18,6 @@
     "@vuepress/plugin-prismjs": "2.0.0-beta.51",
     "@vuepress/plugin-theme-data": "2.0.0-beta.49",
     "@vuepress/utils": "^2.0.0-alpha.1",
-    "components": "link:@waline/client/dist/components",
     "sass": "^1.54.9",
     "valine": "^1.5.1",
     "vue": "^3.2.38",
