@@ -8,7 +8,6 @@ specifiers:
   '@vuepress/plugin-prismjs': 2.0.0-beta.51
   '@vuepress/plugin-theme-data': 2.0.0-beta.49
   '@vuepress/utils': ^2.0.0-alpha.1
-  components: link:@waline/client/dist/components
   sass: ^1.54.9
   valine: ^1.5.1
   vue: ^3.2.38
@@ -22,7 +21,6 @@ devDependencies:
   '@vuepress/plugin-prismjs': registry.npmmirror.com/@vuepress/plugin-prismjs/2.0.0-beta.51
   '@vuepress/plugin-theme-data': registry.npmmirror.com/@vuepress/plugin-theme-data/2.0.0-beta.49
   '@vuepress/utils': registry.npmmirror.com/@vuepress/utils/2.0.0-alpha.1
-  components: link:@waline/client/dist/components
   sass: registry.npmmirror.com/sass/1.54.9
   valine: registry.npmmirror.com/valine/1.5.1
   vue: registry.npmmirror.com/vue/3.2.38
@@ -433,7 +431,7 @@ packages:
   registry.npmmirror.com/@types/superagent/4.1.15:
     resolution: {integrity: sha512-iiXaOL2wSbnSY4qg0mFPWJHL9iwyEsoNYwaHF2w58/fsVAQJlj+KUfFAFZu+nzbz+b7dUprJEAc+O9vhHHhQTA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/superagent/-/superagent-4.1.14.tgz}
     name: '@types/superagent'
-    version: 4.1.15
+    version: 4.1.14
     deprecated: '[WARNING] Use 4.1.14 instead of 4.1.15, reason: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/58445'
     dependencies:
       '@types/cookiejar': registry.npmmirror.com/@types/cookiejar/2.1.2
