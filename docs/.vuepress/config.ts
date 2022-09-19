@@ -1,4 +1,4 @@
-import {  defineUserConfig, viteBundler } from 'vuepress'
+import {  defaultTheme, defineUserConfig, viteBundler } from 'vuepress'
 import myTheme from '../../theme/theme'
 import {path} from '@vuepress/utils'
 
@@ -24,10 +24,6 @@ export default defineUserConfig({
           }
         }
       },
-      build:{
-        rollupOptions:{
-        }
-      }
     }
   }),
   markdown:{

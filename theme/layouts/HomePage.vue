@@ -143,7 +143,7 @@ body {
 import { useSiteData } from '@vuepress/client';
 import Navbar from './components/Navbar.vue';
 import ContactBox from './components/ContactBox.vue';
-import { useThemeData } from '@vuepress/plugin-theme-data/lib/client';
+import { useThemeData } from '../plugins/themeData/themeData-client';
 import { myThemeData } from '../types';
 import { usePosts } from '../plugins/posts/posts-client'
 import { onMounted, ref } from 'vue';
@@ -151,8 +151,8 @@ import PostBox from './components/PostBox.vue';
 
 let posts = usePosts()
 let siteData = useSiteData()
-let themeData = useThemeData<myThemeData>()
-let addressSize: number | string = Object.keys(themeData.value.contactInfo).length
+let themeData = useThemeData()
+let addressSize: number | string = Object.keys(themeData.contactInfo).length
 addressSize = (addressSize * 3 / 2) * 5 + 'vh'
 let isTop = ref(true)
 

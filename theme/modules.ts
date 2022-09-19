@@ -8,3 +8,11 @@ declare module 'valine'{
 
     
 }
+
+declare module '@temp/posts' {
+    export let posts:any[]
+}
+
+declare module '@temp/themeData' {
+    export let themeData:any
+}

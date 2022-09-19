@@ -1,11 +1,10 @@
 import { path } from '@vuepress/utils'
-import {defaultTheme, DefaultThemeData} from 'vuepress'
 import type {myThemeData, themeOption} from './types'
-import { ThemeData, themeDataPlugin } from '@vuepress/plugin-theme-data'
 import {prismjsPlugin} from '@vuepress/plugin-prismjs'
 import appendPages from './plugins/appendPages'
 import { postsPlugin } from './plugins/posts/posts'
 import {gitPlugin} from '@vuepress/plugin-git'
+import {themeDataPlugin} from './plugins/themeData/themeData'
 
 export default (options:themeOption) => {
   // returns a theme object
@@ -22,11 +21,12 @@ export default (options:themeOption) => {
     plugins: [
       // ...
       themeDataPlugin({
-        themeData:{
+        
           author:options.author,
-          contactInfo:options.contactInfo
-        } as ThemeData<myThemeData>
-      }) as any,
+          contactInfo:options.contactInfo,
+          comment:options.comment
+          
+      }) ,
       prismjsPlugin({
       }),
       appendPages,

@@ -169,7 +169,7 @@ table {
 <script lang="ts" setup>
 import { usePageData } from '@vuepress/client';
 import { Icon } from '@iconify/vue';
-import { useThemeData } from '@vuepress/plugin-theme-data/lib/client'
+import { useThemeData } from '../plugins/themeData/themeData-client'
 import Navbar from './components/Navbar.vue';
 import type { myThemeData, NavbarItem } from '../types'
 import '../css/prism.css'
@@ -179,14 +179,14 @@ import { onMounted } from 'vue';
 
 let pageData = usePageData<GitPluginPageData>()
 pageData.value.headers
-const themeData = useThemeData<myThemeData>()
+const themeData = useThemeData()
 let date = pageData.value.frontmatter.date || pageData.value.git.createdTime
 onMounted(async ()=>{
   let Valine=(await import('valine')).default
   new Valine({
   el:'#comment',
-  appId:themeData.value.comment.appID,
-  appKey:themeData.value.comment.appKey
+  appId:themeData.comment.appID,
+  appKey:themeData.comment.appKey
 })})
 
 </script>

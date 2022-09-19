@@ -7,8 +7,6 @@ import Categories from './layouts/Categories.vue'
 import About from './layouts/About.vue'
 
 export default defineClientConfig({
-  setup() {
-  },
   layouts: {
     Layout,
     NotFound,
