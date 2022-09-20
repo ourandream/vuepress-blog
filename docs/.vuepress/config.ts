@@ -31,5 +31,5 @@ export default defineUserConfig({
       level:[1,2,3]
     }
   },
-  head: [['link', { rel: 'icon', href: 'favicon.ico',type:"image/x-icon"}]]
+  head: [['link', { rel: 'icon', href: '/img/head.jpg',type:"image/x-icon"}]]
 })
