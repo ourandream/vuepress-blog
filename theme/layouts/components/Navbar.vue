@@ -141,7 +141,7 @@
 <script lang="ts" setup>
 import type { NavbarItem } from '../../types'
 import { Icon } from '@iconify/vue';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 let { activeIndex } = defineProps<{
     activeIndex?: number
@@ -171,9 +171,12 @@ const navbar: NavbarItem[] = [
     }
 ]
 
-let isMobile = computed(() => {
-    return (window.innerWidth <= 1000);
+
+let isMobile = ref(false);
+onMounted(()=>{
+    isMobile.value=window.innerWidth<=1000
 })
+
 let showMenu = ref(false)
 
 </script>

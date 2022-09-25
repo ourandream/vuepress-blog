@@ -190,7 +190,7 @@ import type { myThemeData, NavbarItem } from '../types'
 import '../css/prism.css'
 import Sidebar from './components/Sidebar.vue';
 import { GitPluginPageData } from '@vuepress/plugin-git';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 let pageData = usePageData<GitPluginPageData>()
 pageData.value.headers
@@ -204,8 +204,10 @@ onMounted(async ()=>{
   appKey:themeData.comment.appKey
 })})
 
-let isMobile=computed(()=>{
-  return window.innerWidth<=1000
+
+let isMobile = ref(false);
+onMounted(()=>{
+    isMobile.value=window.innerWidth<=1000
 })
 
 </script>

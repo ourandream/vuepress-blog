@@ -32,10 +32,11 @@
 </style>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import {  onMounted, ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 
-let isMobile = computed(() => {
-    return (window.innerWidth <= 1000);
+let isMobile = ref(false);
+onMounted(()=>{
+    isMobile.value=window.innerWidth<=1000
 })
 </script>
