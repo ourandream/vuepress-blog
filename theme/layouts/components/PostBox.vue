@@ -19,6 +19,9 @@
     padding-right: 1vw;
     padding-bottom: 2vh;
     transition: all ease .4s ;
+    @media screen  and (max-width:1000px){
+        width: 90vw; 
+    }
     &:hover{
         transform: translateY(-0.5em);
     }

@@ -52,11 +52,6 @@
         z-index: 1;
     }
 
-    .navbar {
-        background-color: rgba($color: #000000, $alpha: 0);
-        border: none;
-        z-index: 2;
-    }
 
     .info {
 
@@ -66,7 +61,11 @@
         text-align: center;
 
         left: calc(50% - 15vw);
+
         color: white;
+        @media screen and (max-width:1000px){
+            left: calc(50% - 35vw); 
+        }
 
         #info-logo {
 
@@ -83,7 +82,9 @@
             border-radius: 10px;
             padding: 3%;
             margin-top: 3%;
-
+            @media screen and (max-width:1000px){
+                width: 70vw; 
+            }
 
             h1 {
                 margin: 0;
@@ -112,6 +113,10 @@ address {
 .archive-button {
     text-align: right;
     width: 50vw;
+    @media screen and (max-width:1000px) {
+        width: 90vw; 
+        font-size: large;
+    }
 
     a {
 
@@ -131,11 +136,21 @@ address {
 
     }
 }
+
+.navbar {
+    background-color: rgba($color: #000000, $alpha: 0) !important;
+    border: none !important;
+    z-index: 2;
+}
 </style>
 
 <style>
 body {
     margin: 0;
+}
+
+html{
+    z-index: 1;
 }
 </style>
 

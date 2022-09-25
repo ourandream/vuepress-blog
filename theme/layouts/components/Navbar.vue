@@ -5,13 +5,26 @@
                 <img src="/img/head.jpg" />
             </a>
         </div>
-        <div class="links">
+        <div class="links" v-if="!isMobile">
             <a v-for=" (i,index) in navbar" :href="i.link" :class="{active:activeIndex==index}">
                 <Icon :icon="i.icon" />
                 <span>{{i.text}}</span>
             </a>
 
         </div>
+        <div class="menu__button" v-if="isMobile">
+            <button @click="showMenu=!showMenu">
+
+                <Icon icon="dashicons:menu-alt3"></Icon>
+            </button>
+        </div>
+        <div v-if="showMenu" class="menu">
+            <a v-for=" (i,index) in navbar" :href="i.link" :class="{active:activeIndex==index}">
+                <span>{{i.text}}</span>
+            </a>
+        </div>
+        <div class="mask" v-if="showMenu" @click="()=>{showMenu=false}"></div>
+
     </div>
 </template>
 
@@ -21,16 +34,16 @@
 
 #head {
     border-bottom: 1px solid #eaeaea;
-    padding: 1% 0;
     display: flex;
     height: $navbar-height;
     justify-content: space-between;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, .9);
     position: fixed;
-    width: 100%;
+    width: 100vw;
+    box-sizing: border-box;
     top: 0;
-    z-index: 5;
+    z-index: 100;
 
     #logo {
         display: flex;
@@ -83,16 +96,57 @@
             }
         }
     }
+
+    .menu__button {
+        display: flex;
+        align-items: center;
+        padding: 0 1vw;
+
+        button {
+            background-color: rgba($color: #000000, $alpha: 0);
+            border: none;
+            font-size: 20px;
+        }
+    }
+
+    .menu{
+        position: fixed;
+        display:flex;
+        flex-direction: column;
+        height: 100vh;
+        right: 0;
+        background-color: white;
+        z-index: 100;
+        a{
+            color: black;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 3vh 10vw;
+            &:active{
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+.mask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    z-index: 5;
+    position: fixed;
 }
 </style>
 
 <script lang="ts" setup>
 import type { NavbarItem } from '../../types'
 import { Icon } from '@iconify/vue';
+import { computed, ref } from 'vue';
 
 let { activeIndex } = defineProps<{
     activeIndex?: number
 }>()
+
 
 const navbar: NavbarItem[] = [
     {
@@ -116,4 +170,10 @@ const navbar: NavbarItem[] = [
         icon: 'emojione-monotone:information'
     }
 ]
+
+let isMobile = computed(() => {
+    return (window.innerWidth <= 1000);
+})
+let showMenu = ref(false)
+
 </script>

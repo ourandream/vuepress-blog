@@ -1,5 +1,6 @@
 <template>
-  <Navbar class="navbar"></Navbar>
+  <div>
+<Navbar class="navbar"></Navbar>
   <main>
     <div id="content">
       <div id="content_head">
@@ -31,10 +32,11 @@
 
     </div>
 
-    <Sidebar :headers="pageData.headers" class="sidebar" />
-
+    <Sidebar v-if="!isMobile" :headers="pageData.headers" class="sidebar" />
   </main>
-</template>
+
+  </div>
+  </template>
 
 
 
@@ -55,9 +57,15 @@
     width: 100%;
   }
 
+  .vimg{
+    width: auto;
+  }
+  
+
   a {
     color: $color-default;
     text-decoration: none;
+    overflow-wrap: break-word;
 
     &:hover {
       text-decoration: underline;
@@ -121,6 +129,12 @@ table {
   border-left: 1px solid $border-color;
   border-right: 1px solid $border-color;
   width: 70%;
+  @media screen and (max-width:1000px){
+    border: none; 
+    width: 100vw;
+    padding: 0 15vw;
+    box-sizing: border-box;
+  }
 
 
   #content_head {
@@ -164,6 +178,7 @@ table {
   }
 }
 
+
 </style>
 
 <script lang="ts" setup>
@@ -175,7 +190,7 @@ import type { myThemeData, NavbarItem } from '../types'
 import '../css/prism.css'
 import Sidebar from './components/Sidebar.vue';
 import { GitPluginPageData } from '@vuepress/plugin-git';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
 let pageData = usePageData<GitPluginPageData>()
 pageData.value.headers
@@ -188,5 +203,9 @@ onMounted(async ()=>{
   appId:themeData.comment.appID,
   appKey:themeData.comment.appKey
 })})
+
+let isMobile=computed(()=>{
+  return window.innerWidth<=1000
+})
 
 </script>
