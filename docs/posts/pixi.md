@@ -1,8 +1,14 @@
+---
+title: pixi.js
+category: front-end
+---
+pixi.js是一个灵活的创作引擎.
+<!--more-->
 # base
 
 pixi.js使用webgl技术.
 
-在安装豪pixi.js的包后, 首先我们需要启动它:
+在安装好pixi.js的包后, 首先我们需要启动它:
 
 ```js
 let app = new PIXI.Application({ width: 640, height: 360 });

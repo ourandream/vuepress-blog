@@ -1,4 +1,9 @@
+---
+title: gsap
+category: front-end
+---
 `gsap`是一个强大的几乎可以用于任何框架, 可以操作任何对象的动画框架. 
+<!--more-->
 
 # base tweens
 
