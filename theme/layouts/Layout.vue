@@ -56,6 +56,11 @@
   img {
     width: 100%;
   }
+  #comment{
+    img{
+      width: auto;
+    }
+  }
 
   .vimg{
     width: auto;
