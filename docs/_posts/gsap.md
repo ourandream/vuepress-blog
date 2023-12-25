@@ -1,15 +1,18 @@
 ---
 title: gsap
+date: 2022/12/23 18:23:20
 category: front-end
 ---
-`gsap`是一个强大的几乎可以用于任何框架, 可以操作任何对象的动画框架. 
+
+`gsap`是一个强大的几乎可以用于任何框架, 可以操作任何对象的动画框架.
+
 <!--more-->
 
 # base tweens
 
 在`gsap`中, 一个简单的动画被称为`tween`. 基本的`tween`如下:
 
-`gsap.to()` : 动画从当前状态到给定的值. 
+`gsap.to()` : 动画从当前状态到给定的值.
 
 `gsap.from()` - 从给定的值到当前状态
 
@@ -20,7 +23,7 @@ category: front-end
 例子:
 
 ```js
-gsap.to(".circle", { x: 40, fill: 'blue', });
+gsap.to(".circle", { x: 40, fill: "blue" });
 ```
 
 # Animatable properties
@@ -41,20 +44,20 @@ Transform shorthand
 | scale: 2                   | transform: scale(2, 2)       | Increase or decrease size                                           |
 | transformOrigin: "0% 100%" | transform-origin: 0% 100%;   | The center of translation, this will rotate around the bottom left. |
 
-它默认使用px和角度为单位, 我们也可以使用其他方式:
+它默认使用 px 和角度为单位, 我们也可以使用其他方式:
 
 ```js
 x: 200, // use default of px
 x: "+=200" // relative values
 x: '40vw', // or pass in a string with a different unit for GSAP to parse
 x: () => window.innerWidth / 2, // you can even use functional values to do a calculation!
-  
+
 rotation: 360 // use default of degrees
 rotation: "1.25rad" // use radians
 
 ```
 
-其的css属性没有shorthand但仍可以使用, 但要注意要有-要转化为小驼峰.
+其的 css 属性没有 shorthand 但仍可以使用, 但要注意要有-要转化为小驼峰.
 
 ## 数字, 颜色, 或包含数字的字符串
 
@@ -65,7 +68,7 @@ let obj = { myNum: 10, myColor: "red" };
 gsap.to(obj, {
   myNum: 200,
   myColor: "blue",
-  onUpdate: () => console.log(obj.myNum, obj.myColor)
+  onUpdate: () => console.log(obj.myNum, obj.myColor),
 });
 ```
 
@@ -75,14 +78,14 @@ gsap.to(obj, {
 
 在`tween`的第二个参数, 除了能设置要动画的属性外, 还有一些特殊的属性可以设置:
 
-| Property   | Description                  |
-| ---------- | ---------------------------- |
-| duration   | 持续时间                         |
-| delay      | 多久后开始(repeatDelay每次重复的delay) |
-| repeat     | 重复几次                         |
-| yoyo       | 是否在重复时方向相反(如左右移动)            |
-| stagger    | 多个目标时每个目标的动画的间隔时间            |
-| ease       | 使用数学函数控制动画的速率.               |
+| Property   | Description                              |
+| ---------- | ---------------------------------------- |
+| duration   | 持续时间                                 |
+| delay      | 多久后开始(repeatDelay 每次重复的 delay) |
+| repeat     | 重复几次                                 |
+| yoyo       | 是否在重复时方向相反(如左右移动)         |
+| stagger    | 多个目标时每个目标的动画的间隔时间       |
+| ease       | 使用数学函数控制动画的速率.              |
 | onComplete | 当动画完成时执行给定函数                 |
 
 `ease`有很多具体的选项(甚至可以自定义), 具体需要上官网([Getting Started with GSAP - Learning Center - GreenSock](https://greensock.com/get-started/#easing)))查看.
@@ -93,7 +96,7 @@ gsap.to(obj, {
 
 ```js
 // create a timeline
-let tl = gsap.timeline()
+let tl = gsap.timeline();
 
 // add the tweens to the timeline - Note we're using tl.to not gsap.to
 tl.to(".green", { x: 600, duration: 2 });
@@ -105,7 +108,7 @@ tl.to(".orange", { x: 600, duration: 1 });
 
 `timeline`还可以使用[position parameter](https://greensock.com/position-parameter)(第三个参数)来控制, 它有如下类型:
 
-- **Absolute time** (in seconds) - 从timeline起始计算的绝对时间
+- **Absolute time** (in seconds) - 从 timeline 起始计算的绝对时间
 
 - **Label** - 某个标签指定的时间位置(可通过.`add()`添加)
 
@@ -113,8 +116,8 @@ tl.to(".orange", { x: 600, duration: 1 });
 
 - `">"` - 上一个动画的结束
 
-- 以 `"+="` 和 `"-="` 的存在表示的**relative** values. 注意`"<"` 或 `">"`后接数字也会视为相对值. 例子:
-  
+- 以  `"+="`  和  `"-="`  的存在表示的**relative** values.  注意`"<"`  或  `">"`后接数字也会视为相对值. 例子:
+
   - `"+=1"` - 1 second past the end of the timeline (creates a gap)
   - `"-=1"` - 1 second before the end of the timeline (overlaps)
   - `"myLabel+=2"` - 2 seconds past the label `"myLabel"`
@@ -122,23 +125,23 @@ tl.to(".orange", { x: 600, duration: 1 });
   - `"<3"` - same as `"<+=3"` (see above) (`"+="` is implied when following `"<"` or `">"`)
   - `">-0.5"` - 0.5 seconds before the end of the previous animation. It's like saying *"the end of the previous animation plus -0.5"*
 
-- A complex string based on a **percentage**. When immediately following a `"+="` or `"-="` prefix, the percentage is based on [total duration](https://greensock.com/docs/v3/GSAP/Tween/totalDuration()) of the **animation being inserted**. When immediately following `"&lt"` or `">"`, it's based on the [total duration](https://greensock.com/docs/v3/GSAP/Tween/totalDuration()) of the **previous animation**. *Note: total duration includes repeats/yoyos*. Examples:
-  
+- A complex string based on a **percentage**. When immediately following a `"+="` or `"-="` prefix, the percentage is based on [total duration](<https://greensock.com/docs/v3/GSAP/Tween/totalDuration()>) of the **animation being inserted**. When immediately following `"&lt"` or `">"`, it's based on the [total duration](<https://greensock.com/docs/v3/GSAP/Tween/totalDuration()>) of the **previous animation**. *Note: total duration includes repeats/yoyos*. Examples:
+
   - `"-=25%"` - overlap with the end of the timeline by 25% of the inserting animation's total duration
   - `"+=50%"` - beyond the end of the timeline by 50% of the inserting animation's total duration, creating a gap
   - `"<25%"` - 25% into the previous animation (from its start). Same as `">-75%"` which is negative 75% from the **end** of the previous animation.
   - `"<+=25%"` - 25% of the inserting animation's total duration past the start of the previous animation. Different than `"<25%"` whose percentage is based on the **previous animation's** total duration whereas anything immediately following `"+="` or `"-="` is based on the **inserting animation's** total duration.
-  - `"myLabel+=30%"` - 30% of the inserting animation's total duration past the label `"myLabel"`. 
+  - `"myLabel+=30%"` - 30% of the inserting animation's total duration past the label `"myLabel"`.
 
 `timeline`可以设置默认值, 这样设置`tween`时那些值默认会是默认值:
 
 ```js
-var tl = gsap.timeline({defaults: {duration: 1}});
+var tl = gsap.timeline({ defaults: { duration: 1 } });
 
 //no more repetition of duration: 1!
-tl.to(".green", {x: 200})
-  .to(".purple", {x: 200, scale: 0.2})
-  .to(".orange", {x: 200, scale: 2, y: 20});
+tl.to(".green", { x: 200 })
+  .to(".purple", { x: 200, scale: 0.2 })
+  .to(".orange", { x: 200, scale: 2, y: 20 });
 ```
 
 # control
@@ -147,7 +150,7 @@ tl.to(".green", {x: 200})
 
 ```js
 // store the tween or timeline in a variable
-let tween = gsap.to("#logo", {duration: 1, x: 100});
+let tween = gsap.to("#logo", { duration: 1, x: 100 });
 
 //pause
 tween.pause();
@@ -188,8 +191,8 @@ tween.kill();
 
 ```js
 gsap.to(".class", {
-  duration: 1, 
-  x: 100, 
+  duration: 1,
+  x: 100,
   // arrow functions are handy for concise callbacks
   onComplete: () => console.log("the tween is complete")
 }

@@ -1,32 +1,36 @@
 ---
 title: pixi.js
 category: front-end
+date: 2022/12/23 18:23:20
 ---
-pixi.js是一个灵活的创作引擎.
+
+pixi.js 是一个灵活的创作引擎.
+
 <!--more-->
+
 # base
 
-pixi.js使用webgl技术.
+pixi.js 使用 webgl 技术.
 
-在安装好pixi.js的包后, 首先我们需要启动它:
+在安装好 pixi.js 的包后, 首先我们需要启动它:
 
 ```js
 let app = new PIXI.Application({ width: 640, height: 360 });
 ```
 
-`Application`是一个助手类, 它会帮我们创建renderer, stage, 并启动一个ticker用于更新.
+`Application`是一个助手类, 它会帮我们创建 renderer, stage, 并启动一个 ticker 用于更新.
 
-然后我们需要将它创建的`canvas`添加到dom:
+然后我们需要将它创建的`canvas`添加到 dom:
 
 ```js
 document.body.appendChild(app.view);
 ```
 
-然后我们创建一个`Sprite`, 它是加载图片并使用的一种常用方式.  注意使用之前必须加载, 在这里我们使用一个method来实现:
+然后我们创建一个`Sprite`, 它是加载图片并使用的一种常用方式. 注意使用之前必须加载, 在这里我们使用一个 method 来实现:
 
 ```js
-  // Magically load the PNG asynchronously
-  let sprite = PIXI.Sprite.from('sample.png');
+// Magically load the PNG asynchronously
+let sprite = PIXI.Sprite.from("sample.png");
 ```
 
 然后我们将`Sprite`加入`Stage`, `Stage`可以理解为场景的根容器, 它的所有内容会被加载城帧:
@@ -35,34 +39,34 @@ document.body.appendChild(app.view);
 app.stage.addChild(sprite);
 ```
 
-然后我们利用`ticker`添加动画. `ticker`会在每一帧调用被提供的callback:
+然后我们利用`ticker`添加动画. `ticker`会在每一帧调用被提供的 callback:
 
 ```js
- // Add a variable to count up the seconds our demo has been running
-  let elapsed = 0.0;
-  // Tell our application's ticker to run a new callback every frame, passing
-  // in the amount of time that has passed since the last tick
-  app.ticker.add((delta) => {
-    // Add the time to our total elapsed time
-    elapsed += delta;
-    // Update the sprite's X position based on the cosine of our elapsed time.  We divide
-    // by 50 to slow the animation down a bit...
-    sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
-  });
+// Add a variable to count up the seconds our demo has been running
+let elapsed = 0.0;
+// Tell our application's ticker to run a new callback every frame, passing
+// in the amount of time that has passed since the last tick
+app.ticker.add((delta) => {
+  // Add the time to our total elapsed time
+  elapsed += delta;
+  // Update the sprite's X position based on the cosine of our elapsed time.  We divide
+  // by 50 to slow the animation down a bit...
+  sprite.x = 100.0 + Math.cos(elapsed / 50.0) * 100.0;
+});
 ```
 
 # container
 
-  `container`用于收集一系列子对象, 它的产生耗费很低, 故通常我们建议设置多个`container`对渲染的对象进行分组, 这样既可以灵活控制渲染顺序, 也可以让项目添加功能时更加简单.
+`container`用于收集一系列子对象, 它的产生耗费很低, 故通常我们建议设置多个`container`对渲染的对象进行分组, 这样既可以灵活控制渲染顺序, 也可以让项目添加功能时更加简单.
 
-通常`container`会被用于存储被mask(即仅在规定区域可见)的对象:
+通常`container`会被用于存储被 mask(即仅在规定区域可见)的对象:
 
 ```js
 // Create a graphics object to define our mask
 let mask = new PIXI.Graphics();
 // Add the rectangular area to show
 mask.beginFill(0xffffff);
-mask.drawRect(0,0,200,200);
+mask.drawRect(0, 0, 200, 200);
 mask.endFill();
 
 // Add container that will hold our masked content
@@ -72,19 +76,19 @@ maskContainer.mask = mask;
 // Add the mask as a child, so that the mask is positioned relative to its parent
 maskContainer.addChild(mask);
 // Offset by the window's frame width
-maskContainer.position.set(4,4);
+maskContainer.position.set(4, 4);
 // And add the container to the window!
 frame.addChild(maskContainer);
 
 // Create contents for the masked container
 let text = new PIXI.Text(
-  'This text will scroll up and be masked, so you can see how masking works.  Lorem ipsum and all that.\n\n' +
-  'You can put anything in the container and it will be masked!',
+  "This text will scroll up and be masked, so you can see how masking works.  Lorem ipsum and all that.\n\n" +
+    "You can put anything in the container and it will be masked!",
   {
     fontSize: 24,
     fill: 0x1010ff,
     wordWrap: true,
-    wordWrapWidth: 180
+    wordWrapWidth: 180,
   }
 );
 text.x = 10;
@@ -95,43 +99,43 @@ let elapsed = 0.0;
 app.ticker.add((delta) => {
   // Update the text's y coordinate to scroll it
   elapsed += delta;
-  text.y = 10 + -100.0 + Math.cos(elapsed/50.0) * 100.0;
+  text.y = 10 + -100.0 + Math.cos(elapsed / 50.0) * 100.0;
 });
 ```
 
-我们可以使用`Graphics`创建任意形状的mask. 对与`Sprite`, 我们也可以使用alpha chanel作为mask, 注意canvas不支持这点.
+我们可以使用`Graphics`创建任意形状的 mask. 对与`Sprite`, 我们也可以使用 alpha chanel 作为 mask, 注意 canvas 不支持这点.
 
-`container`的另一个作用是管理被`filter`作用的对象. `filter`是一种仅webgl支持的, 会对每一个像素起作用的效果(比如模糊和放大).
+`container`的另一个作用是管理被`filter`作用的对象. `filter`是一种仅 webgl 支持的, 会对每一个像素起作用的效果(比如模糊和放大).
 
 注意`filter`应该尽量少使用, 它对性能的影响很大.
 
 # Display Objects
 
-`Display Objects`是一个基类, 表示任何可以被pixi渲染的东西. 通常使用的属性如下:
+`Display Objects`是一个基类, 表示任何可以被 pixi 渲染的东西. 通常使用的属性如下:
 
 | PROPERTY       | DESCRIPTION                                                                                           |
 | -------------- | ----------------------------------------------------------------------------------------------------- |
-| **position**   | 相对于父, 在x轴或y轴的位置, 以像素为单位,  也可以直接使用`object.x` / `object.y`                                              |
-| **rotation**   | 角度, 以弧度为单位                                                                                            |
-| **angle**      | 角度, 以角度为单位                                                                                            |
-| **pivot**      | 旋转或子对象的原点.                                                                                            |
-| **alpha**      | 可见读, 0-1.                                                                                             |
-| **scale**      | 放大缩小范围, 可以单独设置x, y的放大缩小.                                                                              |
+| **position**   | 相对于父, 在 x 轴或 y 轴的位置, 以像素为单位,  也可以直接使用`object.x` / `object.y`                  |
+| **rotation**   | 角度, 以弧度为单位                                                                                    |
+| **angle**      | 角度, 以角度为单位                                                                                    |
+| **pivot**      | 旋转或子对象的原点.                                                                                   |
+| **alpha**      | 可见读, 0-1.                                                                                          |
+| **scale**      | 放大缩小范围, 可以单独设置 x, y 的放大缩小.                                                           |
 | **skew**       | Skew transforms the object in x and y similar to the CSS skew() function, and is specified in radians |
-| **visible**    | 是否可见, 影响自身和子对象是否被更新和渲染.                                                                               |
-| **renderable** | 是否渲染, 影响自身是否被渲染, 不影响自身的更新和子对象的渲染.                                                                     |
+| **visible**    | 是否可见, 影响自身和子对象是否被更新和渲染.                                                           |
+| **renderable** | 是否渲染, 影响自身是否被渲染, 不影响自身的更新和子对象的渲染.                                         |
 
 # Textures
 
-`texture`代表一个用于显示在屏幕的像素资源(如video, canvas图形, svg等).
+`texture`代表一个用于显示在屏幕的像素资源(如 video, canvas 图形, svg 等).
 
 首先我们需要加载资源, 一般我们使用`loader`, 它会异步加载资源, 并在加载完毕时发送事件. 通常我们会显示一个加载图片, 然后加载所有所需资源再进行渲染.
 
 `BaseTextures`管理一个像素资源. 多个`texture`可使用同一个`BaseTextures`(由于缓存, 对于同个链接, 会返回同个`BaseTextures`, 节省了资源.
 
-注意对于图片, 即使我们加载了`textures`, 我们依然需要将它上传到cpu进行解码我们可以使用 [Prepare](https://pixijs.download/release/docs/PIXI.Prepare.html)插件, 在展现前完成所有工作.
+注意对于图片, 即使我们加载了`textures`, 我们依然需要将它上传到 cpu 进行解码我们可以使用  [Prepare](https://pixijs.download/release/docs/PIXI.Prepare.html)插件, 在展现前完成所有工作.
 
-当我们不需要某个资源时, 我们可以调用`BaseTextures`的destroy()来清除. 当我们想去除所有资源时, 使用`PIXI.utils.destroyTextureCache()`.
+当我们不需要某个资源时, 我们可以调用`BaseTextures`的 destroy()来清除. 当我们想去除所有资源时, 使用`PIXI.utils.destroyTextureCache()`.
 
 # Graphics
 
@@ -178,50 +182,52 @@ for (let i = 0; i < 5; i++) {
 
 但也正因为此, 我们不需要它时, 必须调用`destroy()`.
 
-`Graphics`除了按上面的直接渲染外, 也可以利用它的几何形状做mask, 详见container章节.
+`Graphics`除了按上面的直接渲染外, 也可以利用它的几何形状做 mask, 详见 container 章节.
 
 # Interaction
 
-我们只需要简单地把`DisplayObject`的`interactive`设为true即可开启互动.
+我们只需要简单地把`DisplayObject`的`interactive`设为 true 即可开启互动.
 
 监听事件:
 
 ```js
-let sprite = PIXI.Sprite.from('/some/texture.png');
-sprite.on('pointerdown', (event) => { alert('clicked!'); });
+let sprite = PIXI.Sprite.from("/some/texture.png");
+sprite.on("pointerdown", (event) => {
+  alert("clicked!");
+});
 ```
 
 一般我们使用`Point`事件, 它既支持鼠标也支持触控屏. 当然我们也可以指定特定的类型来进行一些特殊的操作.
 
-一般事件的触发范围是一个正方形, 我们可以使用`hitArea`来自定义. 它支持 PIXI.Circle, PIXI.Rectangle, PIXI.RoundedRectangle, or PIXI.Polygon.
+一般事件的触发范围是一个正方形, 我们可以使用`hitArea`来自定义. 它支持  PIXI.Circle, PIXI.Rectangle, PIXI.RoundedRectangle, or PIXI.Polygon.
 
 我们可以设置`interactiveChildren`使得点击测试跳过子对象提高性能.
 
 除此之外还有一些要注意的点:
 
-* pixijs的子对象触发事件不可以在父对象处理.
+- pixijs 的子对象触发事件不可以在父对象处理.
 
-* pixijs不支持捕获事件, 所有不支持全局事件处理.
+- pixijs 不支持捕获事件, 所有不支持全局事件处理.
 
 # Render Loop
 
-* 调用ticker的callback
+- 调用 ticker 的 callback
 
-* 更新scene graph
+- 更新 scene graph
 
-* 渲染scene graph
+- 渲染 scene graph
 
-以上是基本的render loop, 注意它也可以自定义.
+以上是基本的 render loop, 注意它也可以自定义.
 
-注意刷新率由于种种原因很难控制, 不过我们可以设置ticker的`minFPS` 和 `maxFPS`来控制刷新率范围. 注意这种控制并不能保证效果, 最好在callback中添加一些处理作为预备.
+注意刷新率由于种种原因很难控制, 不过我们可以设置 ticker 的`minFPS`  和  `maxFPS`来控制刷新率范围. 注意这种控制并不能保证效果, 最好在 callback 中添加一些处理作为预备.
 
 # Scene Graph
 
-`Scene Graph`是一颗树, 保存所有可渲染的对象. 每个对象可以有自己的子对象. 每个对象的位置, 角度, 可见性, 透明度, 都是相对与父对象而言的. (比如父对象透明度0.5, 子对象透明度设0.5最后结果是0.25).
+`Scene Graph`是一颗树, 保存所有可渲染的对象. 每个对象可以有自己的子对象. 每个对象的位置, 角度, 可见性, 透明度, 都是相对与父对象而言的. (比如父对象透明度 0.5, 子对象透明度设 0.5 最后结果是 0.25).
 
 对象的最终计算出的位置, 角度等属性存在`worldTransform`, 透明度存在`worldAlpha`.
 
-对象的渲染顺序是从根往下, 对于每一个节点的子节点从第一个子节点到最后一个字节点. 
+对象的渲染顺序是从根往下, 对于每一个节点的子节点从第一个子节点到最后一个字节点.
 
 我们可以使用`setChildIndex()`重新安排子节点顺序, `addChildAt()`添加一个字节点到指定位置, `sortableChildren`自动排序子节点.
 
@@ -233,10 +239,10 @@ sprite.on('pointerdown', (event) => { alert('clicked!'); });
 
 ```js
 // Get the global position of an object, relative to the top-left of the screen
-let globalPos = obj.toGlobal(new PIXI.Point(0,0));
+let globalPos = obj.toGlobal(new PIXI.Point(0, 0));
 ```
 
-对于网页, 我们还会多处一个叫`Screen Coordinates`的参考系, 即基于生成的canvas的左上角的参考系. 但canvas大小改变时, 渲染的参考系不会改变, 这会导致它们不匹配.
+对于网页, 我们还会多处一个叫`Screen Coordinates`的参考系, 即基于生成的 canvas 的左上角的参考系. 但 canvas 大小改变时, 渲染的参考系不会改变, 这会导致它们不匹配.
 
 # Sprites
 
@@ -244,17 +250,17 @@ let globalPos = obj.toGlobal(new PIXI.Point(0,0));
 
 `Tinting`: 给每一个像素点的颜色添加值, 如`obj.tint = 0x00FF00`让对象变为绿色调.
 
-`Blend modes`: 每一个像素点颜色怎么相加, `add`将值加上(每一个rgb频道分别), `multiply`类是`Tinting`, `screen`覆盖下面的颜色.
+`Blend modes`: 每一个像素点颜色怎么相加, `add`将值加上(每一个 rgb 频道分别), `multiply`类是`Tinting`, `screen`覆盖下面的颜色.
 
-`Pivot vs Anchor`: 两者都可指定旋转的原点.  `Pivot` 是`displayobject`的属性, 它是相对于`sprite`左上角的原点便宜值, 以像素为单位. `anchor`是`sprite`特有的属性, 以百分比为值, 如(0.5, 0.5). 注意改变上述两则都会改变它相对于父节点的位置.
+`Pivot vs Anchor`: 两者都可指定旋转的原点. `Pivot` 是`displayobject`的属性, 它是相对于`sprite`左上角的原点便宜值, 以像素为单位. `anchor`是`sprite`特有的属性, 以百分比为值, 如(0.5, 0.5). 注意改变上述两则都会改变它相对于父节点的位置.
 
 # Text
 
-在webgl中生成文字意外的是一件困难的事情, 没有原生的方法可用. pixi.js提供了两种方法:
+在 webgl 中生成文字意外的是一件困难的事情, 没有原生的方法可用. pixi.js 提供了两种方法:
 
-`Text Object`: 它的原理是交给浏览器处理然后根据浏览器的数据生成图片.我们可以 [text style](https://pixijs.io/pixi-text-style/)轻松地改变样式. 当我们想使用web fonts时, 我们需要使用第三方库预加载它(如`FontFaceObserver`.  当它scale变大时, 它不会重新生成, 可能导致不清晰.
+`Text Object`: 它的原理是交给浏览器处理然后根据浏览器的数据生成图片.我们可以 [text style](https://pixijs.io/pixi-text-style/)轻松地改变样式. 当我们想使用 web fonts 时, 我们需要使用第三方库预加载它(如`FontFaceObserver`. 当它 scale 变大时, 它不会重新生成, 可能导致不清晰.
 
-`BitmapText`: 使用bitmap font生成文字. 低耗费, 但需要加载字体文件. 
+`BitmapText`: 使用 bitmap font 生成文字. 低耗费, 但需要加载字体文件.
 
 根据一下点选择:
 
