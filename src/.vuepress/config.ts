@@ -124,6 +124,7 @@ module.exports = {
       repo: "vuepress-blog",
       clientId: "9d964db2690f7b46cdcd",
       clientSecret: "f4424dae8bb8f5a89eafeb059526667ab3e9977a",
+      autoCreateIssue: process.env.NODE_ENV !== "development",
     },
 
     // 分页配置 (可选)
