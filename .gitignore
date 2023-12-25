@@ -1,3 +1,4 @@
 node_modules
 docs/.vuepress/.*
 docs/.vuepress/dist
+docs/.vuepress/config.bundle*
