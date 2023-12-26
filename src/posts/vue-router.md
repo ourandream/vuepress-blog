@@ -1,8 +1,8 @@
 ---
 title: vue-router
 categories: front-end
-date: 2022/05/24 23:21:15
-updated: 2022/05/25 00:40:46
+date: 2022-05-24 23:21:15
+updated: 2022-05-25 00:40:46
 ---
 [vue router](https://router.vuejs.org/)是vue官方推荐的管理单页应用路由的库.本文是对官网guide内容的总结.
 
@@ -481,7 +481,7 @@ const UserDetails = {
   beforeRouteLeave(to, from) {
     // called when the route that renders this component is about to
     // be navigated away from.
-    // As with `beforeRouteUpdate`, it has access to `this` component instance.
+    -- As with `beforeRouteUpdate`, it has access to `this` component instance.
   },
 }
 ```
@@ -529,7 +529,7 @@ export default {
 
     const userData = ref()
 
-    // same as beforeRouteUpdate option with no access to `this`
+    -- same as beforeRouteUpdate option with no access to `this`
     onBeforeRouteUpdate(async (to, from) => {
       // only fetch the user if the id changed as maybe only the query or the hash changed
       if (to.params.id !== from.params.id) {

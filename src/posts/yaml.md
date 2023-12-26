@@ -1,8 +1,8 @@
 ---
 title: yaml
 categories: language
-date: 2022/05/24 23:20:44
-updated: 2022/05/25 00:41:40
+date: 2022-05-24 23:20:44
+updated: 2022-05-25 00:41:40
 ---
 yaml是一种可读性高的数据组织语言,通常用于设置文件。本文基于[YAML Tutorial in Cloudbees Blog](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
 <!--more-->

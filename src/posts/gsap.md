@@ -1,6 +1,6 @@
 ---
 title: gsap
-date: 2022/12/23 18:23:20
+date: 2022-12-23
 category: front-end
 ---
 

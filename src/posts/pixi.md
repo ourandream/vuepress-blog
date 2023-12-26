@@ -1,7 +1,7 @@
 ---
 title: pixi.js
 category: front-end
-date: 2022/12/23 18:23:20
+date: 2022-12-23 18:23:20
 ---
 
 pixi.js 是一个灵活的创作引擎.
@@ -49,7 +49,7 @@ let elapsed = 0.0;
 app.ticker.add((delta) => {
   // Add the time to our total elapsed time
   elapsed += delta;
-  // Update the sprite's X position based on the cosine of our elapsed time.  We divide
+  -- Update the sprite's X position based on the cosine of our elapsed time.  We divide
   // by 50 to slow the animation down a bit...
   sprite.x = 100.0 + Math.cos(elapsed / 50.0) * 100.0;
 });
@@ -97,7 +97,7 @@ maskContainer.addChild(text);
 // Add a ticker callback to scroll the text up and down
 let elapsed = 0.0;
 app.ticker.add((delta) => {
-  // Update the text's y coordinate to scroll it
+  -- Update the text's y coordinate to scroll it
   elapsed += delta;
   text.y = 10 + -100.0 + Math.cos(elapsed / 50.0) * 100.0;
 });
