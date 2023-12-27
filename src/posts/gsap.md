@@ -8,7 +8,7 @@ category: front-end
 
 <!--more-->
 
-# base tweens
+## base tweens
 
 在`gsap`中, 一个简单的动画被称为`tween`. 基本的`tween`如下:
 
@@ -26,11 +26,11 @@ category: front-end
 gsap.to(".circle", { x: 40, fill: "blue" });
 ```
 
-# Animatable properties
+## Animatable properties
 
 几乎是所有属性都可以进行动画, 主要的类别如下.
 
-## CSS properties
+### CSS properties
 
 Transform shorthand
 
@@ -59,7 +59,7 @@ rotation: "1.25rad" // use radians
 
 其的 css 属性没有 shorthand 但仍可以使用, 但要注意要有-要转化为小驼峰.
 
-## 数字, 颜色, 或包含数字的字符串
+### 数字, 颜色, 或包含数字的字符串
 
 例子:
 
@@ -74,7 +74,7 @@ gsap.to(obj, {
 
 这让`gsap`可以在多个框架下完美工作.
 
-# Special Properties
+## Special Properties
 
 在`tween`的第二个参数, 除了能设置要动画的属性外, 还有一些特殊的属性可以设置:
 
@@ -90,7 +90,7 @@ gsap.to(obj, {
 
 `ease`有很多具体的选项(甚至可以自定义), 具体需要上官网([Getting Started with GSAP - Learning Center - GreenSock](https://greensock.com/get-started/#easing)))查看.
 
-# timelines
+## timelines
 
 `timeline`用于让我们灵活地控制动画的播放实际, 例如:
 
@@ -144,7 +144,7 @@ tl.to(".green", { x: 200 })
   .to(".orange", { x: 200, scale: 2, y: 20 });
 ```
 
-# control
+## control
 
 `tween`和`timeline`都更具体地控制动画的开始暂停:
 
@@ -177,7 +177,7 @@ tween.timeScale(2);
 tween.kill();
 ```
 
-# callback
+## callback
 
 一些在某个实际会自动调用的函数.
 
@@ -207,6 +207,6 @@ function tlComplete() {
 }
 ```
 
-# Plugins
+## Plugins
 
 `gsap`有丰富的插件生态, 可以拓展出很多功能.

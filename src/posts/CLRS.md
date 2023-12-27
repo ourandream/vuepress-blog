@@ -14,7 +14,7 @@ CLRS 算是非常难读的一本书了，书中的数学证明真的是多的要
 
 <!--more-->
 
-# Ⅰ Foundation Introduction
+## Ⅰ Foundation Introduction
 
 ## 2 Getting Started
 

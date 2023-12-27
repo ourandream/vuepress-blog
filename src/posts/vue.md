@@ -8,8 +8,8 @@ updated: 2022-04-05 15:09:10
 vue是一个渐进式前端框架,是最热门的前端框架之一。
 本文是对vue官网的guide内容的总结,版本为目前的默认版本vue3。
 <!--more-->
-# Essential
-## Application & Component Instances
+## Essential
+### Application & Component Instances
 每一个vue app开始于创建application instance.它可以注册一些全局的量被components使用:
 ```js
 const app = Vue.createApp({option})
@@ -59,7 +59,7 @@ console.log(vm.count) // => 4
 ```
 其中`data`的内容会通过`component instance`暴露以被其他的函数等调用.
 vue还有一些默认内容的properties可以通过`component instance`访问,如`$emit`,它们通过`$`显示.
-## lifestyle hook
+### lifestyle hook
 每个`component instance`创建时会经过一系列的步骤,我们可以通过`lifecycle hooks`(函数)来在一些特定的阶段运行自己的代码:
 ```js
 Vue.createApp({
@@ -75,7 +75,7 @@ Vue.createApp({
 注意不能使用`arrow function`,它不能使用`this`.
 在setup中注册必须是在同步代码中注册.
 ![vue官网的lifestyle示意图](https://cdn.jsdelivr.net/gh/ourandream/blog_images@master/blogs/lifecycle.5nj7qp75qj80.webp)
-##   Template Syntax
+###   Template Syntax
 vue使用html加上一些模板语法来使用`component instance`的数据.
 简单的例子:
 ```html
@@ -125,7 +125,7 @@ vue使用html加上一些模板语法来使用`component instance`的数据.
 >3. 表达式只可访问少量的初始globals
 
 在.html文件中的称为`Dom template`,在.vue文件或`template`属性后的叫`string template`.
-## Data Properties and Methods
+### Data Properties and Methods
 vue通过`data`为component instance添加数据:
 ```js
 const app = Vue.createApp({
@@ -184,7 +184,7 @@ app.component('save-button', {
 })
 ```
 注意它使用了`created`来避免多个component instance使用同一个debounced.
-## Computed Properties and Watchers
+### Computed Properties and Watchers
 当我们需要较为复杂的计算时,我们使用`computed properties`:
 ```js
 Vue.createApp({
@@ -228,7 +228,7 @@ computed: {
 }
 ```
 
-## watchers
+### watchers
 有时我们希望当一些state改变时执行一些操作（如异步fetch），此时我们会使用watcher：
 ```html
 <script setup>
@@ -311,7 +311,7 @@ const unwatch = watchEffect(() => {})
 // ...later, when no longer needed
 unwatch()
 ```
-##  Class and Style Bindings
+###  Class and Style Bindings
 处理class和style通常需要很麻烦的字符串处理,故vue提高了用object和array处理它们的机制.
 object:
 ```html
@@ -354,7 +354,7 @@ style的处理和class的类似.style还可以提高一个数组的值,如果最
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 如果相应的css attribute需要前缀,vue会自动检查并添加.
-## Conditional Rendering
+### Conditional Rendering
 使用`v-if`来选择性生成对应的element:
 ```html
 <h1 v-if="awesome">Vue is awesome!</h1>
@@ -373,7 +373,7 @@ style的处理和class的类似.style还可以提高一个数组的值,如果最
 <h1 v-show="ok">Hello!</h1>
 ```
 前者在运行时会找出更多损失,后者则是渲染时更多,按需要使用.
-## List Rendering
+### List Rendering
 我们可以使用`v-for`来生成多个element:
 ```html
 <ul id="array-rendering">
@@ -436,7 +436,7 @@ key要使用string或number.
   </li>
 </template>
 ```
-## Event Handling
+### Event Handling
 使用`v-on`或`@`为事件添加handler:
 ```html
 <div id="basic-event">
@@ -529,7 +529,7 @@ vue提供了多个modifier(通过`.`使用来进行一些特殊的操作
  `.left`
  `.right`
  `.middle`
-##   Form Input Bindings
+###   Form Input Bindings
 我们可以使用`v-model`来控制和使用`input`,`textarea`和`select`.注意需要在js的`data`中设置初始值,`v-model`会忽略html中的value等初始值:
 ```html
 <input v-model="message" placeholder="edit me" />
@@ -564,7 +564,7 @@ option:
 `.lazy`:原来会在`input`事件后,现在改为在`change`事件后.
 `.number`:自动转化字符串为数字.
 `.trim`:去除首尾空白字符.
-##   Components Basics
+###   Components Basics
 component在vue中是可复用的实例,使用前需要注册,注册分为`global`和`local`,`global`对所有app里的component instance都适用.下面是`global`的例子:
 ```js
 const app = Vue.createApp({})
@@ -711,7 +711,7 @@ app.component('my-component', {
   `
 })
 ```
-## Reactivity Fundamentals
+### Reactivity Fundamentals
 我们可以通过`reactive`创建一个可以检测变化和读取值的对象或数组:
 ```js
 import { reactive } from 'vue'
@@ -854,8 +854,8 @@ function increment() {
   <button @click="increment">{{ count }}</button>
 </template>
 ```
-# Components In-Depth
-## Component Registration
+## Components In-Depth
+### Component Registration
 命名推荐使用[W3C rules](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)即全部为小写,用连字符连接.
 `global registration`:
 ```js
@@ -887,7 +887,7 @@ export default {
 }
 ```
 ComponentA是`ComponentA: ComponentA`的shorthand.
-## prop
+### prop
 正如前面所说,prop是一系列可以传值给component的properties,通过一个string array定义:
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
@@ -966,7 +966,7 @@ html为:
 我们应该避免在子component中修改prop.
 如果需要改变,最好在子component内新建一个computed或普通的property来进行修改.
 如果使用Dom template,注意将camelCase转化为kebab-case.
-## Non-Prop Attributes
+### Non-Prop Attributes
 对于我们没有设定为`prop`的属性,如果调用component是传入了,分两种情况:
 若component只有一个root node,那它们会自动传为它.
 我们可以设置关闭:
@@ -995,7 +995,7 @@ app.component('date-picker', {
 这样它们会传给component中某个特定的element了,注意是所有non-prop属性.
 如果component有多个root node,它不会自动继承,只能通过`$attris`访问.
 可以通过`:class="$attrs.class"`等语句访问特定的attribute.
-## Custom Events
+### Custom Events
 关于`event`的命名,和prop的命名类似,它会自动让camelCase的命名对应的kebab-case的命名有效,且在dom template中只有后者有效.
 事件会被发送到外围的component,故可为该component添加listener：
 ```html
@@ -1095,7 +1095,7 @@ app.mount('#app')
 ```
 当生成component instance后,我们`modelModifiers`里会有我们使用了的modifier并被设为`true`,任何我们就可以通过method进行相关的处理了.
 如果`v-model`带了参数,那prop的名字应为`arg + "Modifiers"`.
-## Slots
+### Slots
 正如我们在前面所说,如果我们想要我们的component可以包裹内容,使用`slot`:
 ```html
 <button class="btn-primary">
@@ -1208,7 +1208,7 @@ app.mount('#app')
   <span class="green">{{ item }}</span>
 </todo-list>
 ```
-## Provide / inject
+### Provide / inject
 当想把某个数据传给深处的子component时,使用`prop`显得极为麻烦,这个时候我们使用`provide/inject`,父component provide数据,子component inject数据:
 ```js
 const app = Vue.createApp({})
@@ -1273,7 +1273,7 @@ app.component('todo-list-statistics', {
   }
 })
 ```
-## Dynamic & Async Components
+### Dynamic & Async Components
 我们以前用过`is`来切换component:
 ```html
 <component :is="currentTabComponent"></component>
@@ -1304,7 +1304,7 @@ app.component('async-example', AsyncComp)
 ```
 它可以使用ES2015的module语句,也可以locally registration.
 它会被`<Suspense>`控制,即视为它有一个该父component,它的状态被该component控制,自己的控制被忽略.可以通过`suspensible: false`关闭该控制.
-## Template refs
+### Template refs
 有时我们想直接在js中访问component或element,这个时候使用`ref`:
 ```html
 <input ref="input" />
@@ -1386,7 +1386,7 @@ this.$refs.usernameInput.focusInput()
 注意,`$refs`在component渲染完成后才会产生,避免在template或computed property中使用.
 如果使用的是option API定义的component,我们使用ref时可以直接访问所有内容.
 如果使用的是`script setup`,只能访问到expose的内容.
-##  Handling Edge Cases
+###  Handling Edge Cases
 有时我们需要处理一些边界情况,这种时候可能需要稍微忽视一些vue的一些规则.注意一定不要滥用这些规则.
 强制重渲染使用 [`$forceUpdate`](https:--v3.vuejs.org-api-instance-methods.html#forceupdate),注意它只让当前的instance重渲染,子component 并不会.
 让一些静态内容只渲染一次然后缓存使用`v-once`:
@@ -1400,7 +1400,7 @@ app.component('terms-of-service', {
   `
 })
 ```
-## Async Components
+### Async Components
 在大型应用中,我们可能需要仅在必须的时候从服务器加载component,此时我们可以使用异步component:
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -1440,9 +1440,9 @@ const AsyncComp = defineAsyncComponent({
   timeout: 3000
 })
 ```
-# Composition API
+## Composition API
 composition API用于将一系列代码按逻辑组合。
-## basic
+### basic
 `setup`函数会在component instance形成之前运行,他接受props作为参数,返回值在接下来都可用.
 ```js
 export default {
@@ -1516,8 +1516,8 @@ console.log(counter.value) // 1
 console.log(twiceTheCounter.value) // 2
 ```
 我们还可以进一步细分,将相关的内容放入不同的文件再引入.
-# Reusability
-## Composables
+## Reusability
+### Composables
 `composables`为一类使用composition API处理state logic的函数.
 例子(处理鼠标移动):
 ```js
@@ -1554,7 +1554,7 @@ export function useMouse() {
 `composables`必须只在`script setup`或setup函数中调用.有时也可以在onMounted中调用.理由如下:
 1. 可以注册lifestyle hook
 2. computed和watcher可以随component instance移除.
-## Custom Directives
+### Custom Directives
 我们可以自己设计directive,这一般是为了复用一些直接访问dom的代码:
 ```html
 <script setup>
@@ -1640,7 +1640,7 @@ app.directive('color', (el, binding) => {
 ```
 如果注册的directive使用在component上,则会传为component的root element,若有多个,它会被忽略并直接报错.
 一般不推荐给component使用自己设计的directive.
-## plugins
+### plugins
 `plugins`为一些为整个app所使用的功能,一般用于注册多个components或directive,或进行一些全局操作.
 定义:
 ```js
@@ -1662,8 +1662,8 @@ app.use(myPlugin, {
   /* optional options */
 })
 ```
-# build-in component
-## Transition
+## build-in component
+### Transition
 `Transition`用于为element或component进出dom时添加动画效果,它会在以下三种情况下触发:
 -   选择性渲染 `v-if`
 -   选择性显示 `v-show`
@@ -1842,7 +1842,7 @@ function leaveCancelled(el) {}
   ...
 </Transition>
 ```
-## TransitionGroup
+### TransitionGroup
 `TransitionGroup`用于对于列表项的增加删除或顺序改变添加动画,于`Transition`的不同点如下:
 -   默认不会添加一个父element包裹,可通过 `tag` 添加.
 -   [Transition modes](https://vuejs.org/guide/built-ins/transition.html#transition-modes)不可用.
@@ -1906,7 +1906,7 @@ function onEnter(el, done) {
   })
 }
 ```
-## keepAlice
+### keepAlice
 此component用于缓存component:
 ```html
 <!-- Inactive components will be cached! -->
@@ -1960,7 +1960,7 @@ onDeactivated(() => {
 deactivated指被移除dom但仍在cache tree时.
 注意在最初的mount和最后的unmount两者也会被调用.
 对component中嵌套着的子component两个hook也能使用.
-## teleport
+### teleport
 本component用于template传送到所在component外的dom.
 使用:
 ```html
@@ -1997,8 +1997,8 @@ to的值为css selector.
   <div>B</div>
 </div>
 ```
-# SFC
-## SFC Syntax Specification
+## SFC
+### SFC Syntax Specification
 SFC,即在单个文件编写的component(.vue),它的基本框架如下:
 ```html
 <template>
@@ -2041,7 +2041,7 @@ SFC会在下列情况自动使用文件名作为component的名字:
 -   Dev warning formatting
 -   DevTools inspection
 -   自我引用.比已经注册了或引入了的component优先度低.
-## script setup
+### script setup
 为setup函数的语法糖,使用方法如下:
 ```html
 <script setup>
@@ -2107,7 +2107,7 @@ defineExpose({
 </script>
 ```
 其中的ref会自动unwrapped.
-## style
+### style
 使用 `<style scoped>`可以让css限定在当前的component中，不好影响父也不会影响子，但注意父component会受到深层次的子component的css的影响。
 如果想影响子component,使用`deep`:
 ```html
@@ -2194,13 +2194,13 @@ export default {
 </style>
 ```
 最后会通过inline style实现动态改变.
-# typescript
+## typescript
 可简单地在把`<script>`写成`<script lang="ts">`以开始写ts,或创建单独的`.ts`文件,当然这是建立上打包工具正确配置好ts的前提下.
 注意在vscode中,若使用了`volar`,我们需要关闭内置的typescript以使用它的`takeover mode`.关闭步骤如下:
 1. ctrl+shift+p打开命令行输入show build-in extensions.
 2. 点击后关闭typescript features(仅工作区)
 3. 重启vscode
-## composition APIs
+### composition APIs
 当我们定义`props`,可以通过runtime declaration或type-based declaration获得type,即:
 ```html
 <script setup lang="ts">
@@ -2330,7 +2330,7 @@ const openModal = () => {
 }
 </script>
 ```
-## options APIs
+### options APIs
 使用`props`需要使用`defineComponent`:
 ```ts
 import { defineComponent } from 'vue'

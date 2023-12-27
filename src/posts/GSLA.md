@@ -10,7 +10,7 @@ updated: 2022-04-05
 
 线性代数相关内容的学习总结.
 
-## <!--more-->
+<!--more-->
 
 ## 第一章
 
@@ -306,10 +306,7 @@ error $e=b-p$, e 垂直与 a，且经过 b
 
 直线的 projection matrix P 满足:
 
-> $p=Pb$
-> $P=\frac{aa^T}{a^Ta}(proof:a(b-a\hat{x})=0,p=a\hat{x}\Rightarrow \hat{x}=\frac{a^Tb}{a^Ta})$
-> $P^2=P$
-> $(I-P)b=b-p=e$
+> $p=Pb$ > $P=\frac{aa^T}{a^Ta}(proof:a(b-a\hat{x})=0,p=a\hat{x}\Rightarrow \hat{x}=\frac{a^Tb}{a^Ta})$ > $P^2=P$ > $(I-P)b=b-p=e$
 
 subspace 的 projection p 满足：
 $$p=\hat{x_1}a_1+...+\hat{x_n}a_n=A\hat{x}$$
@@ -346,9 +343,7 @@ $$
 
 $Q(orthogonal\;matrix)$ 满足：
 
-> $Q^TQ=I(inverse=transpose)$
-> $||Qx||=\sqrt{(Qx)^TQx}=x$
-> $(Qx)^T(Qy)=x^TQ^TQy=x^Ty$
+> $Q^TQ=I(inverse=transpose)$ > $||Qx||=\sqrt{(Qx)^TQx}=x$ > $(Qx)^T(Qy)=x^TQ^TQy=x^Ty$
 
 least squres solution for Qx=b:
 $\hat{x}=Q^Tb\\

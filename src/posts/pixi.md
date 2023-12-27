@@ -8,7 +8,7 @@ pixi.js 是一个灵活的创作引擎.
 
 <!--more-->
 
-# base
+## base
 
 pixi.js 使用 webgl 技术.
 
@@ -55,7 +55,7 @@ app.ticker.add((delta) => {
 });
 ```
 
-# container
+## container
 
 `container`用于收集一系列子对象, 它的产生耗费很低, 故通常我们建议设置多个`container`对渲染的对象进行分组, 这样既可以灵活控制渲染顺序, 也可以让项目添加功能时更加简单.
 
@@ -109,7 +109,7 @@ app.ticker.add((delta) => {
 
 注意`filter`应该尽量少使用, 它对性能的影响很大.
 
-# Display Objects
+## Display Objects
 
 `Display Objects`是一个基类, 表示任何可以被 pixi 渲染的东西. 通常使用的属性如下:
 
@@ -125,7 +125,7 @@ app.ticker.add((delta) => {
 | **visible**    | 是否可见, 影响自身和子对象是否被更新和渲染.                                                           |
 | **renderable** | 是否渲染, 影响自身是否被渲染, 不影响自身的更新和子对象的渲染.                                         |
 
-# Textures
+## Textures
 
 `texture`代表一个用于显示在屏幕的像素资源(如 video, canvas 图形, svg 等).
 
@@ -137,7 +137,7 @@ app.ticker.add((delta) => {
 
 当我们不需要某个资源时, 我们可以调用`BaseTextures`的 destroy()来清除. 当我们想去除所有资源时, 使用`PIXI.utils.destroyTextureCache()`.
 
-# Graphics
+## Graphics
 
 `Graphics`是一个几何形状构建工具, 一个例子:
 
@@ -184,7 +184,7 @@ for (let i = 0; i < 5; i++) {
 
 `Graphics`除了按上面的直接渲染外, 也可以利用它的几何形状做 mask, 详见 container 章节.
 
-# Interaction
+## Interaction
 
 我们只需要简单地把`DisplayObject`的`interactive`设为 true 即可开启互动.
 
@@ -209,7 +209,7 @@ sprite.on("pointerdown", (event) => {
 
 - pixijs 不支持捕获事件, 所有不支持全局事件处理.
 
-# Render Loop
+## Render Loop
 
 - 调用 ticker 的 callback
 
@@ -221,7 +221,7 @@ sprite.on("pointerdown", (event) => {
 
 注意刷新率由于种种原因很难控制, 不过我们可以设置 ticker 的`minFPS`  和  `maxFPS`来控制刷新率范围. 注意这种控制并不能保证效果, 最好在 callback 中添加一些处理作为预备.
 
-# Scene Graph
+## Scene Graph
 
 `Scene Graph`是一颗树, 保存所有可渲染的对象. 每个对象可以有自己的子对象. 每个对象的位置, 角度, 可见性, 透明度, 都是相对与父对象而言的. (比如父对象透明度 0.5, 子对象透明度设 0.5 最后结果是 0.25).
 
@@ -244,7 +244,7 @@ let globalPos = obj.toGlobal(new PIXI.Point(0, 0));
 
 对于网页, 我们还会多处一个叫`Screen Coordinates`的参考系, 即基于生成的 canvas 的左上角的参考系. 但 canvas 大小改变时, 渲染的参考系不会改变, 这会导致它们不匹配.
 
-# Sprites
+## Sprites
 
 `Sprites`一般代表一张图片, 它是`displayobject`, 故有很多可以设置的选项. 需要注意的如下:
 
@@ -254,7 +254,7 @@ let globalPos = obj.toGlobal(new PIXI.Point(0, 0));
 
 `Pivot vs Anchor`: 两者都可指定旋转的原点. `Pivot` 是`displayobject`的属性, 它是相对于`sprite`左上角的原点便宜值, 以像素为单位. `anchor`是`sprite`特有的属性, 以百分比为值, 如(0.5, 0.5). 注意改变上述两则都会改变它相对于父节点的位置.
 
-# Text
+## Text
 
 在 webgl 中生成文字意外的是一件困难的事情, 没有原生的方法可用. pixi.js 提供了两种方法:
 

@@ -8,7 +8,7 @@ updated: 2022-04-05 15:08:53
 在大型js应用中,Debug因为js灵活的type变得非常困难.`TypeScript`相对于在js的基础上添加了类型检查系统,为大型应用的构建提供了便利,同时也为可以增强编辑器的代码补全功能.
 本文是对ts官网handbook的内容的总结.
 <!--more-->
-# Everyday Types
+## Everyday Types
 js中的常用的primitives(`String`,`Number`,`Boolean`)在ts对应的是`string`, `number`, and `boolean`.大写开头的类型名也合法,但为了于一些内置的type兼容,最好使用小写开头.
 对应较少使用的primitives(`BigInt`,`Symbol`)对应的是`bigint`和`symbol`.
 某种类型的数字的写法有`string[]`或`Array<number>`
@@ -211,7 +211,7 @@ console.log(x!.toFixed());
 ```
 注意这不好改变编译出来的js代码,故还是需要做相关的对应null和undefined的处理.
 `enum`是在js中不存在,但ts添加的功能.只在必要时使用.
-# narrowing
+## narrowing
 ts分析代码并更精确地确定type的功能较`narrowing`.它借助一些特殊结构的称为type guard的代码确定type.
 首先是js自带的`typeof`,这自然能用来确定type.ts同时还会注意js中的一些坑,如typeof null是object.
 然后是truthiness,即if等条件状态语句自动将非boolean变量转化为条件的功能.
@@ -284,7 +284,7 @@ function getArea(shape: Shape) {
 
 }
 ```
-# More on Functions
+## More on Functions
 表示函数的type:
 ```ts
 function greeter(fn: (a: string) => void) {
@@ -482,7 +482,7 @@ function sum({ a, b, c }: { a: number; b: number; c: number }) {
 
 }
 ```
-# Object Types
+## Object Types
 在ts中,object的类型(object types)可以是匿名的:
 ```ts
 function greet(person: { name: string; age: number }) {
@@ -702,8 +702,8 @@ type BooleansStringNumber = [...boolean[], string, number];
 ```ts
 let point = [3, 4] as const;
 ```
-# Type manipulation
-## generic
+## Type manipulation
+### generic
 我们可以`interface`来形成约束条件:
 ```ts
 interface Lengthwise {
@@ -736,7 +736,7 @@ function create<Type>(c: { new (): Type }): Type {
 
 }
 ```
-## keyof
+### keyof
 对object type使用使用`keyof`获得一个它的key组成的union:
 ```ts
 type Point = { x: number; y: number };
@@ -757,7 +757,7 @@ type M = keyof Mapish;
 
 //type M:string|number,因为js中的obj会自动将obj[0]转化为obj["0"]
 ```
-## typeof
+### typeof
 在js中已经中`typeof`运算符可已使用,在ts中它能正确根据上下文推断出type:
 ```ts
 let s = "hello";
@@ -771,7 +771,7 @@ type Predicate = (x: unknown) => boolean;
 type K = ReturnType<Predicate>;//K:boolean,ReturnType只接受type参数
 ```
 注意当作为type annotation使用时,只有对`identifiers`(如变量名,函数名)和它们的properties中使用`typeof`才合法.
-## indexed access types
+### indexed access types
 我们可以使用`index`来获取type:
 ```ts
 type Person = { age: number; name: string; alive: boolean };
@@ -818,7 +818,7 @@ const key = "age";
 
 type Age = Person[key];
 ```
-## condition types
+### condition types
 我们可以使用`condition types`来利用条件判断判断type:
 ```ts
 interface Animal {
@@ -876,7 +876,7 @@ type ToArrayNonDist<Type> = [Type] extends [any] ? Type[] : never;
 
 type StrArrOrNumArr = ToArrayNonDist<string | number>;//(string | number)[]
 ```
-## mapped types
+### mapped types
 我们有时希望通过现有的type建立新的type,此时我们可以使用`mapped types`,遍历某个type的key建立type:
 ```ts
 type OptionsFlags<Type> = {
@@ -936,7 +936,7 @@ radius: number;
 type KindlessCircle = RemoveKindField<Circle>;
 //type KindlessCircle = { radius: number; }
 ```
-## template literal types
+### template literal types
 就像js中的template literal,该语法也可以被用于type:
 ```ts
 type World = "world";
@@ -968,7 +968,7 @@ type LocaleMessageIDs = `${Lang}_${AllLocaleIDs}`;
 - `Lowercase<StringType>`:全部转为小写字母.
 - `Capitalize<StringType>`:首字母大写.
 - `Uncapitalize<StringType>`:首字母小写.
-# class
+## class
 我们使用`field declaration`来声明public的可读写的properties:
 ```ts
 class Point {
@@ -1614,13 +1614,13 @@ fn({});
 
 fn(fn);
 ```
-# Modules
+## Modules
 在ts中,type可以被正常`import`和`export`.不过我们也可以使用ts添加的方法表示我们在处理type:
 ```ts
 import type { Cat, Dog } from "./animal.js";
 import { createCatName, type Cat, type Dog } from "./animal.js";
 ```
-# 设置
+## 设置
 `strict`:开启一系列增强的类型检查功能.
 `noImplicitAny`:禁止ts中出现`any`类型.
 `strictNullChecks`:更严格地检查null和undefined.

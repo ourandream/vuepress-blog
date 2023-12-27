@@ -7,7 +7,7 @@ updated: 2022-05-25 00:41:03
 pinia是vue官方推荐的存储管理库,可用于管理全局的数据.
 <!--more-->
 
-# 基础
+## 基础
 
 ```js
 import { createPinia } from 'pinia'
@@ -72,7 +72,7 @@ export default defineComponent({
 })
 ```
 
-# state
+## state
 
 在pinia,我们通过一个函数定义定义`state`:
 
@@ -193,7 +193,7 @@ export default {
 }
 ```
 
-# getter
+## getter
 
 定义`getter`(可带参数也可以不带而使用`this`):
 
@@ -282,7 +282,7 @@ export default {
 }
 ```
 
-# action
+## action
 
 定义`action`:
 
@@ -387,7 +387,7 @@ export default {
 }
 ```
 
-# plugin
+## plugin
 
 pinia中plugin为一个函数,通过`pinia.use()`使用,它有如下功能:
 

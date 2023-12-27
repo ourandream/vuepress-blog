@@ -9,7 +9,7 @@ updated: 2021-12-23 18:23:21
 
 <!--more-->
 
-# base
+## base
 
 javascript是一门解释性的编程语言,它一般用于配合html,css动态更新网页的内容.它一般在用户端运行,当然它也可以在服务器端运行.
 
@@ -64,7 +64,7 @@ js中的注释和c++类似:
 
 js代码的每一行都要以分号结尾.
 
-## variables
+### variables
 
 `variables`,即存放值的容器.在js中,我们使用let声明变量:
 
@@ -118,7 +118,7 @@ bird.species = 'Striated Caracara';
 
 我们应该尽可能使用常量,只在必要时使用变量.
 
-## basic math
+### basic math
 
 在js中常用的只有一种数字类型`Number`(实际还有一种少用的`BigInt`用于大数).它可以进行整数小数的相关计算.
 
@@ -159,7 +159,7 @@ bird.species = 'Striated Caracara';
 
 注意`===`和`!==`,实际上js是有`==`和`!=`的,但它们不会检查值的类型,使用前值能更严格地进行比较.
 
-## string
+### string
 
 js中的string使用单引号或双引号围起来：
 
@@ -264,7 +264,7 @@ const semiColon = station.indexOf(';');
 let myArray = myData.split(',');
 ```
 
-## array
+### array
 
 js中的array创建如下：
 
@@ -349,9 +349,9 @@ arr.join('');
 ```js
 weeks.sort(function (a, b) { return a - b;  })
 ```
-# building blocks
+## building blocks
 
-## conditions
+### conditions
 
 js中的条件写法和c++的非常类似：
 
@@ -398,7 +398,7 @@ switch (expression) {
 
 注意`break`和`default`,如果没有`break`则会从该条条件开始执行所有的代码块.`default`则会在没有条件符合时执行.
 
-## loop
+### loop
 
 首先是一般的`for`循环:
 
@@ -450,7 +450,7 @@ for (const item of array) {
 
 除此之外还有`break`用于跳出循环.`continue`用于进入下一次循环.
 
-## function
+### function
 
 函数一般的声明如下:
 
@@ -532,13 +532,13 @@ myFun("one", "two", "three", "four", "five", "six")
 // b, "two"
 // manyMoreArgs, ["three", "four", "five", "six"] <-- notice it's an array
 ```
-# event
+## event
 
 `event`是在系统中发生的行为或事件.在web中,`event`一般与element相对应(如按钮被点击).
 
 与`event`相对应的有`event handler`,它会在event发生时被执行.在`js`中它是一个函数.
 
-## event handler
+### event handler
 
 我们可以利用对应的properties来应用`event handler`:
 
@@ -606,7 +606,7 @@ btn.addEventListener('click', function() {
 controller.abort(); // removes any/all event handlers associated with this controller
 ```
 
-## other concept
+### other concept
 
 有时我们会空间`event handler`带一个`event`参数,它是一个会自动传进的参数,带有额外信息,可进行一些额外的操作.
 
@@ -652,9 +652,9 @@ video.onclick = function(e) {
 
 我们可以利用这些实现`event delegation`,即只要某element的子element发出对应信号就会执行一定操作.
 
-# objects
+## objects
 
-## object literal
+### object literal
 
 js的objects指一系列数据和功能的集合.其中数据被称为`properties`,功能被称为`methods`.
 
@@ -740,7 +740,7 @@ Object.defineProperty(object1, 'property1', {
 person['eyes'] = 'hazel';
 ```
 
-## constructor
+### constructor
 
 js的`constructor`书写如下:
 
@@ -791,7 +791,7 @@ let copy1 = Object.create(obj);//如果property有对象则会复制reference
 var copy2 = JSON.parse(JSON.stringify(obj));//深度拷贝
 ```
 
-## objects prototype
+### objects prototype
 
 js通过`prototype chain`实现继承,即每一个构造函数都有一个`prototype`属性,用于存放可以被继承的属性或函数.当继承时,该属性的内容被继承.一个个对象的对应关系形成链.这样的话新的对象的函数会是指向前面函数的指针,避免了重复创建函数的问题.
 
@@ -845,7 +845,7 @@ person1.constructor;
 person1.constructor.name
 ```
 
-## inheritance
+### inheritance
 
 js中的继承书写如下:
 
@@ -873,7 +873,7 @@ Object.defineProperty(Teacher.prototype, 'constructor', {
     enumerable: false, // so that it does not appear in 'for in' loop
     writable: true });
 ```
-## class
+### class
 `ECMAScript 2015`提供了类似c++语言中的`class`的写法:
 
 ```js
@@ -1028,7 +1028,7 @@ class Teacher extends Person {
 
 这样我们就可以使用subject修改_subject了.且我们可以在每次属性被调用或被修改时进行一些操作.
 
-## json
+### json
 
 `json`是一类使用js中的类写法为格式的文件，用以传递数据.把json字符串转化为js对象称为`deserialization`,将js对象转化为json字符串被称为`serialization`.`json`的一般格式如下:
 
@@ -1070,13 +1070,13 @@ let myString = JSON.stringify(myObj);//转化为json
 const superHeroes = JSON.parse(superHeroesText);//转化为js对象
 ```
 
-# asynchronous
+## asynchronous
 
 在js中使用`asynchronous`可以将费时的工作(如查询数据库)放到另一线程中,避免导致网页加载时间过长.
 
 js中的异步操作会放在`event loop`中,它会在非异步操作执行完后执行.js实际上还是一个单线程语言。
 
-## callback
+### callback
 
 在js中我们可以使用`Async callbacks`,即给定一个函数作为参数,它会在调用的函数执行完毕后执行.
 
@@ -1108,7 +1108,7 @@ function loadAsset(url, type, callback) {
 
 注意不是所有的callback都是异步的(如`forEach`).
 
-## promise
+### promise
 
 `promise`指一个代表函数执行是否成功的中间态对象,它是`modern web APIs`,用于更好的控制异步操作。
 
@@ -1211,7 +1211,7 @@ function timeoutPromise(message, interval) {
 
 
 
-## timeouts and internals
+### timeouts and internals
 
 我们可以使用`setTimeout`让某个函数在另一个线程等待一定的时间后运行:
 
@@ -1281,7 +1281,7 @@ draw();
 
 上述函数均在主线程运行.
 
-## async and await
+### async and await
 
 我们可以使用`async`让一个函数或类的方法返回`promise`:
 
@@ -1341,9 +1341,9 @@ async function timeTest() {
 
 注意最后利用`all`是为了方便异常处理.
 
-# APIs
+## APIs
 
-## document
+### document
 
 就总体而言.
 
@@ -1432,7 +1432,7 @@ var index = element.tabIndex;
 它的值是一个正整数或0,它的顺序的规则:
 1. 是如果设置了则按设置的数的大小排序,若同样大按出现的顺序排序.
 2. 如果为0或不支持,则按出现的次序排序.
-## fetch data from server
+### fetch data from server
 
 在以前,我们使用`XMLHttpRequest`来请求数据(Ajax),首先,我们需要创建一个对象:
 
@@ -1497,7 +1497,7 @@ fetch(url).then(function(response) {
 });
 ```
 
-## third-party APIs
+### third-party APIs
 
 要使用第三方的API,有时我们需要在html进行连接:
 
@@ -1512,7 +1512,7 @@ fetch(url).then(function(response) {
 
 一般它们都需要API keys才能使用,这是API提供商为避免滥用而设立的.
 
-## drawing graphic
+### drawing graphic
 
 我们可以在html中创建`canvas`,然后在js中画图.
 
@@ -1624,7 +1624,7 @@ image.onload = function() {
 
 我们还可以使用`webGL`画3d图像,通常我们会使用第三方库(如three.js)来简化这一操作.
 
-## video and audio
+### video and audio
 
 我们可以使用相关的api自己写一个播放控件,具体方法是在html搭好框架后再在js中写相关的功能.它的图标可以使用web icon font以便于切换.
 
@@ -1653,7 +1653,7 @@ media.currentTime = 0;
 
 用`media.duration`可获得整个视频的时长(秒),用于进度条相关控件的实现.
 
-## client-side storage
+### client-side storage
 
 我们可以在用户端存储一些数据便于加快网页加载,防止多次下载同样的内容.
 
@@ -1836,7 +1836,7 @@ self.addEventListener('fetch', function(e) {
   );
 });
 ```
-## Validating forms
+### Validating forms
 js提供了[Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation)用于验证数据.下列element支持它们:
 -   [`HTMLButtonElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement) (represents a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element)
 -   [`HTMLFieldSetElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement) (represents a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset) element)
@@ -1862,7 +1862,7 @@ js提供了[Constraint Validation API](https://developer.mozilla.org/en-US/docs/
 -   `setCustomValidity(message)`:添加不符合要求时浏览器显示的信息.当添加时,该element被认为是`invalid`.添加空字符代表`valid`.
 浏览器默认的错误显示不可通过css,且在不同浏览器的实现不同,故我们可以通过[`novalidate`](https:--developer.mozilla.org-en-US-docs-Web-HTML-Attributes-novalidate "This is a link to an unwritten page")属性让form关闭浏览器默认的验证和错误显示,然后使用自己设计的验证系统.
 
-## sending form data
+### sending form data
 使用`fetch`和`FormData`:
 ```js
 let form = document.querySelector('form');
@@ -1889,8 +1889,8 @@ form.addEventListener('submit',async (e) => {
 ```
 即使有文件它也会自动处理.
 
-# others
-## Destructuring assignment
+## others
+### Destructuring assignment
 用于解包数组或对象的语法.
 数组的基础用法:
 ```js
@@ -2113,7 +2113,7 @@ const {self, prot} = obj;
 // self "123"
 // prot "456" (Access to the prototype chain)
 ```
-## modules
+### modules
 以前js通常只需要单文件运行，故没有module功能，现代浏览器为起添加了此功能。
 注意只有在modules中可以使用modules,故引入文件需:
 ```html
@@ -2198,7 +2198,7 @@ export default await colors;
 - `.js`文件必须正确配置`MIME-type`.
 - 本地运行会导致CORS错误.
 - 如果使用`.mjs`表示module,有很多环境会不支持.
-## animation
+### animation
 控制animation event:
 ```css
 .slidein {

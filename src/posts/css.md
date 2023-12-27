@@ -10,7 +10,7 @@ updated: 2021-12-23
 
 <!--more-->
 
-# base
+## base
 
 css 的基本语法如下：
 
@@ -219,7 +219,7 @@ padding: 10px 15px 15px 5px;
 
 css 中的空格一样和 html 会被忽略,但注意不要给`properties`和`value`的中间加空格
 
-# cascade and inheritance
+## cascade and inheritance
 
 `cascade`指 css 应用规则的规则,上面已经有简单的介绍(后到优先,specificity 高优秀),
 
@@ -290,11 +290,11 @@ css 中的空格一样和 html 会被忽略,但注意不要给`properties`和`va
 }
 ```
 
-# selector
+## selector
 
 接下来对 selector 进行深入的了解
 
-## type class id
+### type class id
 
 type
 
@@ -350,7 +350,7 @@ h1#heading {
 
 它每页文档只能被使用一次
 
-## attribute
+### attribute
 
 Attribute selectors
 
@@ -399,7 +399,7 @@ p::first-line { }
 }
 ```
 
-## combinators
+### combinators
 
 descendant combinator
 
@@ -435,7 +435,7 @@ p ~ img
 
 实际使用时,我们尽量不要使用太复杂的 selector,对复用性和可读性等都有一定的损害.
 
-# box model
+## box model
 
 一个 html element 可以看作被放在一个`box`中:
 
@@ -533,7 +533,7 @@ margin 的一个重要概念是 margin collapsing.当两个 elements 的 margin 
 
 `padding`和`margin`类似,不同的是它没有 collapsing,值只能为 0 或正值.
 
-# background and borders
+## background and borders
 
 `background-color`:
 
@@ -683,7 +683,7 @@ span {
 }
 ```
 
-# text direction
+## text direction
 
 文本的方向被叫做`writing-mode`,有三个值:
 
@@ -705,7 +705,7 @@ span {
 
 这是新出的标准添加的,改变`writing mode`尽量使用避免出错.
 
-# overflowing content
+## overflowing content
 
 有时内容会 overflow，即 box 太小不足放下内容，内容跑到 box 外面了。
 
@@ -763,7 +763,7 @@ overflow 是可带两个值,一个给`overflow-x`,一个给`overflow-y`,当日�
 
 如果使用了`auto`或`scroll`,我们说我们建立了`block formatting context`,即内容不可超过 box,且有滚动条控制内容.
 
-# values and units
+## values and units
 
 css 中的`value type`指一类值的集合.
 
@@ -820,7 +820,7 @@ function 还有一个`calc()`可用于进行数学计算:
 }
 ```
 
-# sizing items
+## sizing items
 
 一般一个 element 会有一个`intrinsic size`,即内在大小(`<div>`根据内容自动生成此大小,若无内容则无).当我们通过如`width`等修改大小后,修改完的大小叫`extrinsic size`,即外来的大小.
 
@@ -830,7 +830,7 @@ function 还有一个`calc()`可用于进行数学计算:
 
 我们有时也使用`viewport`(即浏览器显示网站区域)的大小来修改大小,具体看上面 values 里的介绍.
 
-# image media and form element
+## image media and form element
 
 image,video 都属于`replaced element`,css 不可影响它们的 internal layout.
 
@@ -858,7 +858,7 @@ input[type="email"] {
 }
 ```
 
-# styling table
+## styling table
 
 首先添加一些空间，处理 layout：
 
@@ -930,7 +930,7 @@ table {
 
 对于 caption,需要知道的是我们还可以通过`caption-side: bottom;`,调整 captain 的位置,如调到下方.
 
-# text and font styling
+## text and font styling
 
 对于字的美化,css 中的 properties 大致可分为两类:
 
@@ -938,7 +938,7 @@ table {
 >
 > 2. ltext ayout 的 style
 
-## font
+### font
 
 首先显而易见的是我们可以用`color`来修改字的颜色.
 
@@ -1019,7 +1019,7 @@ h1 {
 }
 ```
 
-## text layout
+### text layout
 
 `text-align`用于控制文本摆放位置,值如下:
 
@@ -1061,7 +1061,7 @@ p {
 }
 ```
 
-## styling list
+### styling list
 
 处理 list 相关的空白，我们需要让 list 的上下空与环绕它的元素一致(vertical rhyme),我们同样需要让它们的内部水平间隔也一致(如控制字的大小).
 
@@ -1090,7 +1090,7 @@ ul li {
 
 关于 list style 有一个 shorthand property`list-style`,它就是上面三个 property 的集合,可以使用一个或多个.如果同时使用了图片和形状,则形状只会在图片失效时被使用.
 
-## styling linking
+### styling linking
 
 首先了解一下 link 的各种状态：
 
@@ -1155,7 +1155,7 @@ a[href*="#"] {
 
 我们还经常把 link 做成一个个按钮,并弄成无序表,此时我们会遇到不同的 li 之间有多出的空白的问题(inline block 的问题).此时可以通过把 margin 设为负等方法解决.
 
-## web fonts
+### web fonts
 
 web fonts 即我们可以通过提供字体文件供用户下载来使得字体可用.
 
@@ -1183,9 +1183,9 @@ web fonts 即我们可以通过提供字体文件供用户下载来使得字体�
 
 我们也可以使用在线的字体服务,同样付费或免费( [Google Fonts](https://www.google.com/fonts)),按网站的要求复制想要的 html 和 css 代码即可.
 
-# layout
+## layout
 
-## normal flow
+### normal flow
 
 当没有任何对 layout 的修改时,我们使用 normal flow 来处理不同 element 在 viewport 上的显示.
 
@@ -1233,7 +1233,7 @@ span {
 
 margin 的一个重要概念是 margin collapsing.当两个 elements 的 margin 相遇时,它们会融合到一起.当它们的值都为正时,去较大的那个.当一正一负时,正-负得到最终的值,当全为负时,去最小的负值.
 
-## flexbox
+### flexbox
 
 `flexbox`是一维的 layout,它可以从行或列的角度安排 elements.
 
@@ -1347,7 +1347,7 @@ button:first-child {
 
 flexbox 可嵌套.
 
-## grids
+### grids
 
 grids 是一种二维的 layout.它有行和列,行或列之间的空格被称为`gutter`.
 
@@ -1499,7 +1499,7 @@ footer {
 3. 它必须是一个长方形.
 4. 不能在两个方向上重复.
 
-## floats
+### floats
 
 `float`用于将某个 element 移出 normal flow，然后放在另一个 element 之上，该 element 的内容环绕它（类似报纸的环绕字）。
 
@@ -1582,7 +1582,7 @@ footer {
 }
 ```
 
-## positioning
+### positioning
 
 `positioning`会将 element 弄出 normal flow 再进行处理.默认情况下它的值是:
 
@@ -1665,7 +1665,7 @@ h1 {
 
 `sticky`则会将 element 在未显示时表现得像 relative 一样,等它显示并到一定位置时,就固定在 viewport 中.这是一个较新的 value.
 
-## multiple-column layout
+### multiple-column layout
 
 用于将内容自动分页，生成多列的布局。
 
@@ -1719,7 +1719,7 @@ h1 {
 
 这样就不会让完整的内容分隔了.
 
-## responsive design
+### responsive design
 
 现在移动设备的盛行导致屏幕尺寸已经多样到无法一个个做一个网页适配的情况，于是有了`responsive design`,即根据屏幕大小自动适应的一类技术.
 
@@ -1761,7 +1761,7 @@ h1 {
 
 这用于告诉手机浏览器给真实的屏幕尺寸,早期的手机浏览器会给一个大尺寸让大尺寸网页显示然后让用户滚动查看.
 
-## media query
+### media query
 
 一个基础的`media query`的格式如下:
 
@@ -1844,7 +1844,7 @@ h1 {
 }
 ```
 
-## legacy layout methods
+### legacy layout methods
 
 过去没有 grid layout,为了实现人们使用了很多方法,虽然现在已经有了,但在较旧的网站那些方法依然在使用,故需要了解相关的方法.
 
@@ -1967,7 +1967,7 @@ target / context = result
 
 网上还有很多第三方的 css grid framework(如[Skeleton website](http://getskeleton.com/)),使用它们可以简便我们的工作.
 
-## supporting older browsers
+### supporting older browsers
 
 对于老的不支持 grid 或 flex 等 layout 的浏览器,我们可以利用 fallback 给它们.核心思想是浏览器会忽略掉无法使用的 css properties,且以下 properties 在 grid,flex 中会失效:
 
@@ -1999,9 +1999,9 @@ target / context = result
 
 在 IE 的有些版本中对 grid 有过短暂的支持(注意 edge 也支持,所以可能出问题),但需要加类似-ms-的前缀.这个只有在需要支持该版本的 IE 的大量用户时才会使用,故只需做了解.
 
-# style form
+## style form
 
-## base
+### base
 
 以前对 form 进行样式修改很困难，现在已经相对简单了，但还是有很多需要注意的点。
 和其他的 element 基本一样修改的：
@@ -2032,12 +2032,12 @@ target / context = result
 - Elements involved in creating dropdown widgets, including [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select), [`<option>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option), [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup) and [`<datalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist).
 - [`<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) and [`<meter>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
 
-## bad and ugly
+### bad and ugly
 
 对于 bad(较难修改),我们通常会使用(appearance:none)来取消默认样式,然后再进行修改.
 对于 ugly(无法修改),最后还是建立一个自己的 control 来替换.
 
-## pseudo class
+### pseudo class
 
 对所有 form control 都起作用的：
 
@@ -2058,9 +2058,9 @@ target / context = result
 - [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) 通过键盘 focus 时匹配.
 - The [`:placeholder-shown`](https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown) [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) 和  [`<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) 的 placeholder 显示时(即值未空且有 placeholder 设定)匹配.
 
-# others
+## others
 
-## animation
+### animation
 
 使用 css 动画有以下优点:
 
@@ -2148,7 +2148,7 @@ animation-iteration-count: 2, 1;
 /*bounce-2.5s-2*/
 ```
 
-## transition
+### transition
 
 `transition`用于控制 css properties 变换时的动画.
 有如下的 properties 用于控制:
@@ -2218,7 +2218,7 @@ transition 作用的 css property 名
 
 当事件发出时动画已经执行的时长.
 
-## scroll snap
+### scroll snap
 
 `scroll snap`可让用户滚动时快速滚动到指定位置,形成类似翻页的效果.
 它的核心是[`scroll-snap-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type) 和 [`scroll-snap-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align).
@@ -2254,7 +2254,7 @@ transition 作用的 css property 名
 `scroll-snap-align`的`start`指的是滚动后停下的在 section 中的位置(其他 element 也可).除此之外还有`end`,`center`.
 `scroll-padding`和`scroll-margin`用于定义停下时的 scroll container 的 padding 和或子 element 的 margin.显示效果是未翻整页.在前者`.scroller`中使用,后者在子 element 中使用,故后者可有不同值.
 
-## transform
+### transform
 
 `transform`可在不影响 normal flow 的情况下改变 element 的形状和位置.它只对符合 box model(display:block)的 element 起作用.
 主要的 properties 有两个:
@@ -2267,11 +2267,11 @@ transition 作用的 css property 名
 指定改变的类型,可同时执行多个.改变的类型有 rotation, skewing, scaling, 和 translation(平移).它们均可在 x,y 上进行(如 translateX(2px)).
 也可以在进行 3d 的变换,不过需要指定`perspective`.
 
-## calc
+### calc
 
 calc 加使用`+`,`-`运算符必须在运算符的两边加上空格.
 
-# 一些建议
+## 一些建议
 
 > 1.保持命名风格等持续.
 >

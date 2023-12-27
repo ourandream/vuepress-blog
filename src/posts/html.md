@@ -8,11 +8,11 @@ updated: 2021-12-23 18:23:21
 html是一种标记语言，用于让浏览器识别并展示内容。html包含一系列的element，以使各种各样的内容正确显示。本文内容是基于MDN web docs的[html学习](https://developer.mozilla.org/en-US/docs/Learn/HTML)的相关内容的个人总结.
 <!--more-->
 
-# element
+## element
 
 我们强调elemnet要有语义学含义
 
-## tags
+### tags
 
 tags可用于区分element，指定element的功能，如
 
@@ -30,11 +30,11 @@ tags可大写可小写,不过一般写成小写,tags可嵌套,但注意不能错
 <p>My cat is <strong>very grumpy.</p></strong>
 ```
 
-## block inline
+### block inline
 
 block level element会在新的一行显示内容,还会在内容的上下加上空行(可通过css关闭),inline element则不会
 
-## empty 
+### empty 
 
 有些element加>结尾,如
 
@@ -42,7 +42,7 @@ block level element会在新的一行显示内容,还会在内容的上下加上
 <img src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png">
 ```
 
-## attributes
+### attributes
 
 attributes用于指定element的各种属性,属性注意要在前后加一个空格,写成
 
@@ -54,7 +54,7 @@ src="..."
 
 有些attribute写下名字即可,它们被称为`Boolean attributes`
 
-# 简单html分析
+## 简单html分析
 
 `<!DOCTYPE html>`:doctype是以前html链接到一系列写好html的规则所用的，现在变成了让所有东西正确工作需要引入的，上述写法是最短的有效写法
 
@@ -86,7 +86,7 @@ html的注释按如下方式书写
 <!--comment-->
 ```
 
-# 重要的head element
+## 重要的head element
 
 `<title>`:在上面已经有阐述
 
@@ -156,7 +156,7 @@ and HTML5 Apps. It also documents Mozilla products, like Firefox OS.">
 
 这样可以方便搜索引擎的精确匹配和用语朗器的准确阅读
 
-# 文本组织
+## 文本组织
 
 html提供很多element用于组织文本结构以便阅读
 
@@ -229,7 +229,7 @@ for short quotations that don't require paragraph breaks.</q></p>
 <time datetime="2016-01-20">20 January 2016<-time>
 ```
 
-# hyperlink
+## hyperlink
 
 超链接是web中重要的组成部分,几乎所有web的内容可用指向一个链接
 
@@ -307,7 +307,7 @@ for short quotations that don't require paragraph breaks.</q></p>
 
 最后的body会给邮件自动填充标题名
 
-# 网站结构
+## 网站结构
 
 一般网站由以下部分组成
 
@@ -366,7 +366,7 @@ and his markup didn't read very well.</p>
 >
 > 5.尝试画出网站的结构图
 
-# debug
+## debug
 
 html对语法并不严格，出现错误浏览器会做一定的补全
 
@@ -374,9 +374,9 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 或在浏览器自带的开发工具中查找错误
 
-# 多媒体嵌入
+## 多媒体嵌入
 
-## image
+### image
 
 一般我们使用`<img>`来插入图片
 
@@ -411,7 +411,7 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 如果要加装饰性的图片,使用css
 
-## 视频和音频
+### 视频和音频
 
 在html5前，我们使用如`flash`之类的插件播放视频,但这会带来很多问题.html5里,我们可以直接引入视频文件.
 
@@ -451,7 +451,7 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 `audio`为播放音频的element,除了长宽调整和`poster`,其他基本和video相同
 
-## 其他网页内容
+### 其他网页内容
 
 我们使用`iframe`来引入其他网页的内容(如油管视频)
 
@@ -493,7 +493,7 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 | names and values, to feed the plugin as parameters           | ad hoc attributes with those names and values                | single-tag `<param>` elements, contained within `<object>`   |
 | independent HTML content as fallback for an unavailable resource | not supported (`<noembed>` is obsolete)                      | contained within `<object>`, after `<param>` elements        |
 
-## vector graphics
+### vector graphics
 
 vector graphics比位图好的方面是放大缩小不会失真，而且在其中的文字可以直接访问，便于修改样式和使用脚本等。
 
@@ -541,7 +541,7 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 这样只会当浏览器不支持iframe时显示fallback,但这样也会导致不能使用js操作
 
-## responsive image
+### responsive image
 
 用户的设备有不同的大小和分辨率，有时我们需要根据大小显示不同的图片(art direction problem),有时我们需要根据用户的分辨率选中不同分辨率的图片(resolution switching problem),这需要借助html里面的element,因为css和js会在网页加载前加载,那是图片的element还没有加载无法控制.
 
@@ -584,7 +584,7 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 `media`为设备的大小条件,注意不要同时写sizes,`img`必须写,提供一个没有匹配时的图片显示选择或不支持picture时的图片选择,如果不提供则不会显示图片
 
-# table
+## table
 
 在网页中我们经常需要处理表格数据，于是html提高了`table`供我们使用
 
@@ -752,11 +752,11 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 </tbody>
 ```
 
-# form
+## form
 
 `web forms`用于用户与网页进行交互，它有很多的`form controls(widgets)`和一些辅助的element组成,并可验证输入的数据格式(`form validation`)
 
-## base
+### base
 
 定义`form`:
 
@@ -816,7 +816,7 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 `label`被点击时,对应的widget也会工作.
 
 推荐每一个`widget`只有一个`label`.
-## html5 input type
+### html5 input type
 html5中引入了许多新的`input type`便于使用.
 `email`用于表示输入邮箱.它会检查邮箱格式,错误的话发送数据时会报错.
 可以利用`multiple`输入多个邮箱(逗号分隔):
@@ -851,7 +851,7 @@ html5还添加了多个可获取时间的type.
 <input type="date" name="myDate" min="2013-06-01" max="2013-08-31" step="7" id="myDate">
 ```
 `color`用于获取颜色,一般返回6位16进制小写的信息.
-## other form controls
+### other form controls
 多行输入：
 ```html
 <textarea cols="30" rows="8">content</textarea>
@@ -922,7 +922,7 @@ html5还添加了多个可获取时间的type.
 -   若在 higher,  lower =>worst part, medium=>average part , higher=>preferred part.
 一般而已,preferred时显示绿色,average时显示黄色,worst时显示红色.
 `progress`和`meter`包裹的内容会作为不支持浏览器的显示或屏幕阅读器的读取部分.
-## Client-side form validation
+### Client-side form validation
 在发送数据前，我们需要对用户的数据进行验证,看看是否符合规范.
 html5提供了很多个attribute来验证:
 -   [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required): 标出哪个control的数据是必须的.

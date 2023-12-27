@@ -6,7 +6,7 @@ updated: 2022-05-25 00:40:46
 ---
 [vue router](https://router.vuejs.org/)是vue官方推荐的管理单页应用路由的库.本文是对官网guide内容的总结.
 
-# 基础
+## 基础
 
 vue router的使用可简单的添加npm包,或使用`<script scr="url">`引入.
 
@@ -50,7 +50,7 @@ app.mount('#app')
 
 然后通过`this.$router`或在composition api中使用`useRouter` 或`useRoute`获得实例.
 
-# Dynamic Route Matching with Params
+## Dynamic Route Matching with Params
 
 route可以带参数(称作param):
 
@@ -78,7 +78,7 @@ const User = {
 
 当匹配通过route但参数不同时,我们为了效率仍回使用相同的组件,此时需要使用一个watcher来观察参数的变换,或使用`beforeRouteUpdate`
 
-# Routes' Matching Syntax
+## Routes' Matching Syntax
 
 我们可以使用中则表达式来匹配:
 
@@ -145,7 +145,7 @@ const routes = [
 ]
 ```
 
-# Nested Routes
+## Nested Routes
 
 我们可以嵌套路由,即路由匹配的组件里也有`router-view`.
 
@@ -178,7 +178,7 @@ const routes = [
 
 children组件也可以继续嵌套.
 
-# Programmatic Navigation
+## Programmatic Navigation
 
 除了使用router-link,我们还可以使用router实例导航:
 
@@ -205,7 +205,7 @@ router.push({ path: '/about', hash: '#team' })
 
 router提供`router.push`, `router.replace` and `router.go`,于history api中的[`window.history.pushState`,`window.history.replaceState` and `window.history.go`](https://developer.mozilla.org/en-US/docs/Web/API/History)相同.
 
-# Named routes
+## Named routes
 
 我们还可以使用`name`来定义路由,这样就不用编写负责的url了.
 
@@ -235,7 +235,7 @@ const routes = [
 router.push({ name: 'user', params: { username: 'erina' } })
 ```
 
-# Named Views
+## Named Views
 
 有时候我们需要在同个界面显示多个view,此时我们需要给view提供`name`:
 
@@ -267,7 +267,7 @@ const router = createRouter({
 
 它可以于嵌套一起使用.
 
-# Redirect and Alias
+## Redirect and Alias
 
 定义重定向:
 
@@ -330,7 +330,7 @@ const routes = [
 
 注意如果有参数在别名中也应该添加参数.
 
-# Passing Props to Route Components
+## Passing Props to Route Components
 
 我们可以给路由对于的组件传props.
 
@@ -381,7 +381,7 @@ const routes = [
 ]
 ```
 
-# Different History modes
+## Different History modes
 
 我们有两种history mode,一种是`hash mode`:
 
@@ -413,7 +413,7 @@ const router = createRouter({
 
 这种情况下没有`#`前缀,但切换时会发出请求,我们需要配置服务器不是静态资源的所有链接都指向`index.html`.
 
-# Navigation Guards
+## Navigation Guards
 
 `navigation guards`用于验证跳转.
 
@@ -486,7 +486,7 @@ const UserDetails = {
 }
 ```
 
-# Composition API
+## Composition API
 
 在composition中使用:
 

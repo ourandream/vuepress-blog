@@ -7,7 +7,7 @@ updated: 2022-05-25 00:41:40
 yaml是一种可读性高的数据组织语言,通常用于设置文件。本文基于[YAML Tutorial in Cloudbees Blog](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
 <!--more-->
 
-# 基本概念
+## 基本概念
 
 yaml以`---`作为数据(document)的开始,以`...`作为数据的结尾.
 
@@ -42,11 +42,11 @@ turtle-doves: two
 yaml以`#`表示注释:
 
 ```yaml
-# This is a full line comment
-foo: bar # this is a comment, too
+## This is a full line comment
+foo: bar ## this is a comment, too
 ```
 
-# 基础数据类型
+## 基础数据类型
 
 整数(十进制,十六进制,八进制):
 
@@ -131,7 +131,7 @@ WHY1: YES
 WHY2: NO
 ```
 
-# 数组和字典
+## 数组和字典
 
 单行:
 
@@ -180,7 +180,7 @@ foo:
 foo: { thing1: huey, thing2: louie, thing3: dewey }
 ```
 
-# 更多设置
+## 更多设置
 
 保留结尾空格:
 

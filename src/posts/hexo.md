@@ -11,7 +11,7 @@ updated: 2022-04-05 15:06:18
 折腾了不久hexo和this，也算是玩出了一些心得。准备做些记录，免得忘记。
 <!--more-->
 
-# base
+## base
 
 每次改完主题或者想更新博客，必须在博客的根目录下打开git bash,执行以下命令：
 ```
@@ -60,9 +60,9 @@ updated: 2017-09-05 20:18:54 #手动添加更新时间
 ---
 ```
 
-# next
+## next
 
-## 侧边框标题自动添加数字去除
+### 侧边框标题自动添加数字去除
 
 在next主题文件_config.yml文件下搜索toc,找到如下界面:
 ```yml
@@ -88,7 +88,7 @@ toc:
 ```
 把其中的number改为false即可
 
-## 文章底部标签美化
+### 文章底部标签美化
 ```swig
 <div class="post-tags">
 	{%- for tag in post.tags.toArray() %}
@@ -97,7 +97,7 @@ toc:
 ```
 找到相应的代码然后用以上代码覆盖即可
 
-## 上传并在文章中使用图片
+### 上传并在文章中使用图片
 先在npm中安装**hexo-asset-image**
 
 然后打开/node_modules/hexo-asset-image/index.js
@@ -178,7 +178,7 @@ post_asset_folder: true
 ```
 即使用下面的哪一行
 
-## 添加live2d小人
+### 添加live2d小人
 安装插件：
 ```
 npm install --save hexo-helper-live2d
@@ -187,25 +187,25 @@ npm install --save hexo-helper-live2d
 然后在_config.yml中添加如下配置:
 ```js
 live2d:
-  enable: true  # 是否启动
-  scriptFrom: local # 默认
-  pluginRootPath: live2dw/  # 插件在站点上的根目录(相对路径)
-  pluginJsPath: lib/  # 脚本文件相对与插件根目录路径
-  pluginModelPath: assets/  # 模型文件相对与插件根目录路径
-  tagMode: false  # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
-  debug: false  # 调试, 是否在控制台输出日志
+  enable: true  ## 是否启动
+  scriptFrom: local ## 默认
+  pluginRootPath: live2dw/  ## 插件在站点上的根目录(相对路径)
+  pluginJsPath: lib/  ## 脚本文件相对与插件根目录路径
+  pluginModelPath: assets/  ## 模型文件相对与插件根目录路径
+  tagMode: false  ## 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+  debug: false  ## 调试, 是否在控制台输出日志
   model:
-    use: live2d-widget  ## 模型文件
+    use: live2d-widget  ### 模型文件
   display:
-    position: right # 定位方向 left right top bottom
-    width: 150  # 小人宽度
-    height: 300 #  小人高度
-    hOffset: -15  # 向 偏移
-    vOffset: -15  # 像 偏移
+    position: right ## 定位方向 left right top bottom
+    width: 150  ## 小人宽度
+    height: 300 ##  小人高度
+    hOffset: -15  ## 向 偏移
+    vOffset: -15  ## 像 偏移
   mobile:
-    show: true  # 手机端是否显示
+    show: true  ## 手机端是否显示
   react:
-    opacity: 0.7  # 模型透明度
+    opacity: 0.7  ## 模型透明度
 ```
 
 在hexo的根目录创建新文件夹,命名为**live2d_models**,然后live2d文件夹放入其中,在上面的设置中的
@@ -223,17 +223,17 @@ npm install --save live2d-widget-model-koharu
 
 目前不知道这个插件是否只支持通过此种方式下载的模型
 
-# 更换主题
+## 更换主题
 
 下载完主题然后放入放博客的目录里的theme，然后在`config.yml`里修改theme即可.注意要删除hexo-theme的前缀.
 
-# yilia theme
+## yilia theme
 
 图片放在yilia文件夹的resources里面，不过设置路径时要把resources去掉
 
 顶部加载图标在faviico那里设置
 
-# 推送到github
+## 推送到github
 
 在根目录的`config.yml`里面加入如下语句：
 
@@ -261,7 +261,7 @@ IdentityFile ~/.ssh/id_rsa
 Port 443
 ```
 也可以利用vercal或github action的自动部署功能,这样只需要将hexo blog的根目录推送到github上即可.
-# 推送到Coding
+## 推送到Coding
 
 根据创造的SSH文件里的密钥在个人设置里创建SSH密钥，密钥文件一般在`C/Users/user/.SSH`里面,后缀是.pub
 
@@ -275,5 +275,5 @@ Port 443
 
 注意第一个ourandream是团队名
 
-# problem
+## problem
 开头配置必须严格按照yaml语法书写,如title与后面的字符串必须空一格.
