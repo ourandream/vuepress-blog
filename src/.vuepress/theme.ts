@@ -1,6 +1,5 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
-import sidebar from "./sidebar.js";
 
 export default hopeTheme({
   hostname: "https://ourandream.top",
@@ -22,7 +21,7 @@ export default hopeTheme({
   navbar,
 
   // sidebar
-  sidebar,
+  sidebar: "heading",
 
   footer: "默认页脚",
 

@@ -3,5 +3,5 @@
     "strict": true,
     "jsx": "preserve"
   },
-  "include": ["docs/.vuepress/config.ts"]
+  "include": ["src/.vuepress/config.ts"]
 }
