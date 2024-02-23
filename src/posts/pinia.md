@@ -4,51 +4,53 @@ categories: front-end
 date: 2022-05-24 23:21:05
 updated: 2022-05-25 00:41:03
 ---
-pinia是vue官方推荐的存储管理库,可用于管理全局的数据.
-<!--more-->
+
+pinia 是 vue 官方推荐的存储管理库,可用于管理全局的数据.
+
+<!-- more -->
 
 ## 基础
 
 ```js
-import { createPinia } from 'pinia'
+import { createPinia } from "pinia";
 
-app.use(createPinia())
+app.use(createPinia());
 ```
 
-这样我们就创建了一个pinia(root store)并注册为vue插件.
+这样我们就创建了一个 pinia(root store)并注册为 vue 插件.
 
 在`pinia`中,`store`指的是一个存放 [state](https://pinia.vuejs.org/core-concepts/state.html), [getters](https://pinia.vuejs.org/core-concepts/getters.html) and [actions](https://pinia.vuejs.org/core-concepts/actions.html)的实体,它们分别对应`data`, `computed` and `methods`.
 
 定义`store`:
 
 ```js
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 // useStore could be anything like useUser, useCart
 // the first argument is a unique id of the store across your application
-export const useStore = defineStore('main', {
+export const useStore = defineStore("main", {
   // other options...
-})
+});
 ```
 
 使用:
 
 ```js
-import { useStore } from '@/stores/counter'
+import { useStore } from "@/stores/counter";
 
 export default {
   setup() {
-    const store = useStore()
+    const store = useStore();
 
     return {
       // you can return the whole store instance to use it in the template
       store,
-    }
+    };
   },
-}
+};
 ```
 
-注意store使用的是vue的`reactive`,故若想使用destruction语法,需要:
+注意 store 使用的是 vue 的`reactive`,故若想使用 destruction 语法,需要:
 
 ```js
 import { storeToRefs } from 'pinia'
@@ -74,41 +76,41 @@ export default defineComponent({
 
 ## state
 
-在pinia,我们通过一个函数定义定义`state`:
+在 pinia,我们通过一个函数定义定义`state`:
 
 ```js
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-const useStore = defineStore('storeId', {
+const useStore = defineStore("storeId", {
   // arrow function recommended for full type inference
   state: () => {
     return {
       // all these properties will have their type inferred automatically
       counter: 0,
-      name: 'Eduardo',
+      name: "Eduardo",
       isAdmin: true,
-    }
+    };
   },
-})
+});
 ```
 
 修改:
 
 ```js
-const store = useStore()
+const store = useStore();
 //重置为初始值
-store.$reset() 
+store.$reset();
 //合并多个修改
 store.$patch({
   counter: store.counter + 1,
-  name: 'Abalam',
-}) 
+  name: "Abalam",
+});
 cartStore.$patch((state) => {
-  state.items.push({ name: 'shoes', quantity: 1 })
-  state.hasChanged = true
-})
+  state.items.push({ name: "shoes", quantity: 1 });
+  state.hasChanged = true;
+});
 //替换所有state
-store.$state = { counter: 666, name: 'Paimon' }
+store.$state = { counter: 666, name: "Paimon" };
 ```
 
 我们还可以监视更改:
@@ -116,37 +118,35 @@ store.$state = { counter: 666, name: 'Paimon' }
 ```js
 cartStore.$subscribe((mutation, state) => {
   // import { MutationType } from 'pinia'
-  mutation.type // 'direct' | 'patch object' | 'patch function'
+  mutation.type; // 'direct' | 'patch object' | 'patch function'
   // same as cartStore.$id
-  mutation.storeId // 'cart'
+  mutation.storeId; // 'cart'
   // only available with mutation.type === 'patch object'
-  mutation.payload // patch object passed to cartStore.$patch()
+  mutation.payload; // patch object passed to cartStore.$patch()
 
   // persist the whole state to the local storage whenever it changes
-  localStorage.setItem('cart', JSON.stringify(state))
-})
+  localStorage.setItem("cart", JSON.stringify(state));
+});
 ```
 
-使用`$subscribe`而不是watch的好处是它在更改发送后只会触发一次.
+使用`$subscribe`而不是 watch 的好处是它在更改发送后只会触发一次.
 
-默认情况下它被限制在component的范围,如果想要让component取消挂载后仍有些,需要设置`detached`:
+默认情况下它被限制在 component 的范围,如果想要让 component 取消挂载后仍有些,需要设置`detached`:
 
 ```js
 export default {
   setup() {
-    const someStore = useSomeStore()
+    const someStore = useSomeStore();
 
     // this subscription will be kept after the component is unmounted
-    someStore.$subscribe(callback, { detached: true })
+    someStore.$subscribe(callback, { detached: true });
 
     // ...
   },
-}
+};
 ```
 
-
-
-如果是通过前面的composition api的形式使用`store`,我们直接通过`store`访问state,不过如果使用option api(不使用setup)的话,需要使用辅助的函数.
+如果是通过前面的 composition api 的形式使用`store`,我们直接通过`store`访问 state,不过如果使用 option api(不使用 setup)的话,需要使用辅助的函数.
 
 只读:
 
@@ -198,70 +198,70 @@ export default {
 定义`getter`(可带参数也可以不带而使用`this`):
 
 ```ts
-export const useStore = defineStore('main', {
+export const useStore = defineStore("main", {
   state: () => ({
     counter: 0,
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,
   },
-})
+});
 ```
 
-注意如果使用了其他的不使用arrow function定义`getter`,且我们使用了`this`,则在typescript中我们必须指明返回值类型:
+注意如果使用了其他的不使用 arrow function 定义`getter`,且我们使用了`this`,则在 typescript 中我们必须指明返回值类型:
 
 ```ts
-export const useStore = defineStore('main', {
+export const useStore = defineStore("main", {
   state: () => ({
     counter: 0,
   }),
   getters: {
     // automatically infers the return type as a number
     doubleCount(state) {
-      return state.counter * 2
+      return state.counter * 2;
     },
     // the return type **must** be explicitly set
     doublePlusOne(): number {
       // autocompletion and typings for the whole store ✨
-      return this.doubleCount + 1
+      return this.doubleCount + 1;
     },
   },
-})
+});
 ```
 
 我们可以通过返回一个函数的形式使得`getter`可以带参数:
 
 ```js
-export const useStore = defineStore('main', {
+export const useStore = defineStore("main", {
   getters: {
     getUserById: (state) => {
-      return (userId) => state.users.find((user) => user.id === userId)
+      return (userId) => state.users.find((user) => user.id === userId);
     },
   },
-})
+});
 ```
 
 但注意这种情况下它不会被缓存.
 
-使用其他store的getter只需要使用它的store即可:
+使用其他 store 的 getter 只需要使用它的 store 即可:
 
 ```js
-import { useOtherStore } from './other-store'
+import { useOtherStore } from "./other-store";
 
-export const useStore = defineStore('main', {
+export const useStore = defineStore("main", {
   state: () => ({
     // ...
   }),
   getters: {
     otherGetter(state) {
-      const otherStore = useOtherStore()
-      return state.localData + otherStore.data
+      const otherStore = useOtherStore();
+      return state.localData + otherStore.data;
     },
   },
-})
+});
 ```
 
-在option api中使用getter和之前一样使用`mapstate`:
+在 option api 中使用 getter 和之前一样使用`mapstate`:
 
 ```js
 import { mapState } from 'pinia'
@@ -287,11 +287,11 @@ export default {
 定义`action`:
 
 ```js
-import { mande } from 'mande'
+import { mande } from "mande";
 
-const api = mande('/api/users')
+const api = mande("/api/users");
 
-export const useUsers = defineStore('users', {
+export const useUsers = defineStore("users", {
   state: () => ({
     userData: null,
     // ...
@@ -300,23 +300,23 @@ export const useUsers = defineStore('users', {
   actions: {
     async registerUser(login, password) {
       try {
-        this.userData = await api.post({ login, password })
-        showTooltip(`Welcome back ${this.userData.name}!`)
+        this.userData = await api.post({ login, password });
+        showTooltip(`Welcome back ${this.userData.name}!`);
       } catch (error) {
-        showTooltip(error)
+        showTooltip(error);
         // let the form component display the error
-        return error
+        return error;
       }
     },
   },
-})
+});
 ```
 
 注意它可以是异步的.
 
-`action`一般可以直接通过store instance访问.
+`action`一般可以直接通过 store instance 访问.
 
-当使用不用setup的option api时:
+当使用不用 setup 的 option api 时:
 
 ```js
 import { mapActions } from 'pinia'
@@ -345,9 +345,9 @@ const unsubscribe = someStore.$onAction(
     onError, // hook if the action throws or rejects
   }) => {
     // a shared variable for this specific action call
-    const startTime = Date.now()
+    const startTime = Date.now();
     // this will trigger before an action on `store` is executed
-    console.log(`Start "${name}" with params [${args.join(', ')}].`)
+    console.log(`Start "${name}" with params [${args.join(", ")}].`);
 
     // this will trigger if the action succeeds and after it has fully run.
     // it waits for any returned promised
@@ -356,20 +356,20 @@ const unsubscribe = someStore.$onAction(
         `Finished "${name}" after ${
           Date.now() - startTime
         }ms.\nResult: ${result}.`
-      )
-    })
+      );
+    });
 
     // this will trigger if the action throws or returns a promise that rejects
     onError((error) => {
       console.warn(
         `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
-      )
-    })
+      );
+    });
   }
-)
+);
 
 // manually remove the listener
-unsubscribe()
+unsubscribe();
 ```
 
 默认情况下这种监视会限制在组件的范围,想在组件取消挂载时仍然可用:
@@ -377,19 +377,19 @@ unsubscribe()
 ```js
 export default {
   setup() {
-    const someStore = useSomeStore()
+    const someStore = useSomeStore();
 
     // this subscription will be kept after the component is unmounted
-    someStore.$onAction(callback, true)
+    someStore.$onAction(callback, true);
 
     // ...
   },
-}
+};
 ```
 
 ## plugin
 
-pinia中plugin为一个函数,通过`pinia.use()`使用,它有如下功能:
+pinia 中 plugin 为一个函数,通过`pinia.use()`使用,它有如下功能:
 
 - Add new properties to stores
 - Add new options when defining stores
@@ -403,20 +403,20 @@ pinia中plugin为一个函数,通过`pinia.use()`使用,它有如下功能:
 
 ```js
 export function myPiniaPlugin(context) {
-  context.pinia // the pinia created with `createPinia()`
-  context.app // the current app created with `createApp()` (Vue 3 only)
-  context.store // the store the plugin is augmenting
-  context.options // the options object defining the store passed to `defineStore()`
+  context.pinia; // the pinia created with `createPinia()`
+  context.app; // the current app created with `createApp()` (Vue 3 only)
+  context.store; // the store the plugin is augmenting
+  context.options; // the options object defining the store passed to `defineStore()`
   // ...
 }
 ```
 
-`plugin`只在pinia传给app后创建的store起效.
+`plugin`只在 pinia 传给 app 后创建的 store 起效.
 
-为store添加property:
+为 store 添加 property:
 
 ```js
-pinia.use(() => ({ hello: 'world' }))
+pinia.use(() => ({ hello: "world" }));
 ```
 
 也可以通过参数:
@@ -424,37 +424,37 @@ pinia.use(() => ({ hello: 'world' }))
 ```js
 // from the example above
 pinia.use(({ store }) => {
-  store.hello = 'world'
+  store.hello = "world";
   // make sure your bundler handle this. webpack and vite should do it by default
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     // add any keys you set on the store
-    store._customProperties.add('hello')
+    store._customProperties.add("hello");
   }
-})
+});
 ```
 
-注意后者为了让devtools可跟踪多了一个步骤.
+注意后者为了让 devtools 可跟踪多了一个步骤.
 
-store会自动`unwrapping`,不需要加.value:
+store 会自动`unwrapping`,不需要加.value:
 
 ```js
-const sharedRef = ref('shared')
+const sharedRef = ref("shared");
 pinia.use(({ store }) => {
   // each store has its individual `hello` property
-  store.hello = ref('secret')
+  store.hello = ref("secret");
   // it gets automatically unwrapped
-  store.hello // 'secret'
+  store.hello; // 'secret'
 
   // all stores are sharing the value `shared` property
-  store.shared = sharedRef
-  store.shared // 'shared'
-})
+  store.shared = sharedRef;
+  store.shared; // 'shared'
+});
 ```
 
-添加state则需要在以下两个地方添加:
+添加 state 则需要在以下两个地方添加:
 
-- 在`store`以通过store访问
-- 在`store.$state`所以在devtools中可用,在SSR过程中会被**serialized**
+- 在`store`以通过 store 访问
+- 在`store.$state`所以在 devtools 中可用,在 SSR 过程中会被**serialized**
 
 ```js
 const globalSecret = ref('secret')
@@ -475,26 +475,26 @@ pinia.use(({ store }) => {
   // anyway and if we return it, devtools will display it twice.
 ```
 
-注意在plugin中的修改不会被`subscriptions`跟踪到,因为它发生在store可用之前.
+注意在 plugin 中的修改不会被`subscriptions`跟踪到,因为它发生在 store 可用之前.
 
-当加入外部的不是reactive的属性:
+当加入外部的不是 reactive 的属性:
 
 ```js
-import { markRaw } from 'vue'
+import { markRaw } from "vue";
 // adapt this based on where your router is
-import { router } from './router'
+import { router } from "./router";
 
 pinia.use(({ store }) => {
-  store.router = markRaw(router)
-})
+  store.router = markRaw(router);
+});
 ```
 
-在plugin可正常地使用`$subscribe`和`onAction`.
+在 plugin 可正常地使用`$subscribe`和`onAction`.
 
-我们还可以创建新的option然后在plugin中使用:
+我们还可以创建新的 option 然后在 plugin 中使用:
 
 ```js
-defineStore('search', {
+defineStore("search", {
   actions: {
     searchContacts() {
       // ...
@@ -506,10 +506,10 @@ defineStore('search', {
     // debounce the action searchContacts by 300ms
     searchContacts: 300,
   },
-})
+});
 
 // use any debounce library
-import debounce from 'lodash/debounce'
+import debounce from "lodash/debounce";
 
 pinia.use(({ options, store }) => {
   if (options.debounce) {
@@ -518,55 +518,55 @@ pinia.use(({ options, store }) => {
       debouncedActions[action] = debounce(
         store[action],
         options.debounce[action]
-      )
-      return debouncedActions
-    }, {})
+      );
+      return debouncedActions;
+    }, {});
   }
-})
+});
 ```
 
-pinia有完整的typescript支持,故plugin也可以很好地组织类型.
+pinia 有完整的 typescript 支持,故 plugin 也可以很好地组织类型.
 
 参数:
 
 ```tsx
-import { PiniaPluginContext } from 'pinia'
+import { PiniaPluginContext } from "pinia";
 
 export function myPiniaPlugin(context: PiniaPluginContext) {
   // ...
 }
 ```
 
-添加新store property:
+添加新 store property:
 
 ```ts
-import 'pinia'
+import "pinia";
 
-declare module 'pinia' {
+declare module "pinia" {
   export interface PiniaCustomProperties {
     // by using a setter we can allow both strings and refs
-    set hello(value: string | Ref<string>)
-    get hello(): string
+    set hello(value: string | Ref<string>);
+    get hello(): string;
 
     // you can define simpler values too
-    simpleNumber: number
+    simpleNumber: number;
   }
 }
 ```
 
-`PiniaCustomProperties`是一个generic type,当我们需要使用store的类型时可使用:
+`PiniaCustomProperties`是一个 generic type,当我们需要使用 store 的类型时可使用:
 
 ```ts
-import 'pinia'
+import "pinia";
 
-declare module 'pinia' {
+declare module "pinia" {
   export interface PiniaCustomProperties<Id, S, G, A> {
     $options: {
-      id: Id
-      state?: () => S
-      getters?: G
-      actions?: A
-    }
+      id: Id;
+      state?: () => S;
+      getters?: G;
+      actions?: A;
+    };
   }
 }
 
@@ -578,34 +578,27 @@ SS: Setup Store / Store
 */
 ```
 
-对于新的state:
+对于新的 state:
 
 ```ts
-import 'pinia'
+import "pinia";
 
-declare module 'pinia' {
+declare module "pinia" {
   export interface PiniaCustomStateProperties<S> {
-    hello: string
+    hello: string;
   }
 }
 ```
 
-对于新的option:
+对于新的 option:
 
 ```ts
-import 'pinia'
+import "pinia";
 
-declare module 'pinia' {
+declare module "pinia" {
   export interface DefineStoreOptionsBase<S, Store> {
     // allow defining a number of ms for any of the actions
-    debounce?: Partial<Record<keyof StoreActions<Store>, number>>
+    debounce?: Partial<Record<keyof StoreActions<Store>, number>>;
   }
 }
 ```
-
-
-
-
-
-
-

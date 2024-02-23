@@ -5,26 +5,26 @@ abbrlink: 1879f8e5
 date: 2021-12-23 18:23:21
 updated: 2021-12-23 18:23:21
 ---
-html是一种标记语言，用于让浏览器识别并展示内容。html包含一系列的element，以使各种各样的内容正确显示。本文内容是基于MDN web docs的[html学习](https://developer.mozilla.org/en-US/docs/Learn/HTML)的相关内容的个人总结.
-<!--more-->
+
+html 是一种标记语言，用于让浏览器识别并展示内容。html 包含一系列的 element，以使各种各样的内容正确显示。本文内容是基于 MDN web docs 的[html 学习](https://developer.mozilla.org/en-US/docs/Learn/HTML)的相关内容的个人总结.
+
+<!-- more -->
 
 ## element
 
-我们强调elemnet要有语义学含义
+我们强调 elemnet 要有语义学含义
 
 ### tags
 
-tags可用于区分element，指定element的功能，如
+tags 可用于区分 element，指定 element 的功能，如
 
 ```html
-<p>
-    paragraph
-</p>
+<p>paragraph</p>
 ```
 
 指定了一个段落
 
-tags可大写可小写,不过一般写成小写,tags可嵌套,但注意不能错误嵌套如:
+tags 可大写可小写,不过一般写成小写,tags 可嵌套,但注意不能错误嵌套如:
 
 ```html
 <p>My cat is <strong>very grumpy.</p></strong>
@@ -32,19 +32,21 @@ tags可大写可小写,不过一般写成小写,tags可嵌套,但注意不能错
 
 ### block inline
 
-block level element会在新的一行显示内容,还会在内容的上下加上空行(可通过css关闭),inline element则不会
+block level element 会在新的一行显示内容,还会在内容的上下加上空行(可通过 css 关闭),inline element 则不会
 
-### empty 
+### empty
 
-有些element加>结尾,如
+有些 element 加>结尾,如
 
 ```html
-<img src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png">
+<img
+  src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png"
+/>
 ```
 
 ### attributes
 
-attributes用于指定element的各种属性,属性注意要在前后加一个空格,写成
+attributes 用于指定 element 的各种属性,属性注意要在前后加一个空格,写成
 
 ```html
 src="..."
@@ -52,25 +54,25 @@ src="..."
 
 双引号单引号按个人喜欢使用
 
-有些attribute写下名字即可,它们被称为`Boolean attributes`
+有些 attribute 写下名字即可,它们被称为`Boolean attributes`
 
-## 简单html分析
+## 简单 html 分析
 
-`<!DOCTYPE html>`:doctype是以前html链接到一系列写好html的规则所用的，现在变成了让所有东西正确工作需要引入的，上述写法是最短的有效写法
+`<!DOCTYPE html>`:doctype 是以前 html 链接到一系列写好 html 的规则所用的，现在变成了让所有东西正确工作需要引入的，上述写法是最短的有效写法
 
-`<html></html>`:root element,包含html的所有内容
+`<html></html>`:root element,包含 html 的所有内容
 
 `<head></head>`:包含文件的各种信息，如字符集、展现给搜索引擎的内容等
 
-`<meta charset="utf-8">`:指定字符集,一般都要指定避免bug
+`<meta charset="utf-8">`:指定字符集,一般都要指定避免 bug
 
 `<title></title>`: 在浏览器标签处显示的标题
 
 `<body></body>`:包含所有显示给用户的内容
 
-html中的多个空格在处理时会自动减少成一个
+html 中的多个空格在处理时会自动减少成一个
 
-一些特殊符号如<在html中需要用特殊方式显示
+一些特殊符号如<在 html 中需要用特殊方式显示
 
 | Literal character | Character reference equivalent |
 | :---------------- | :----------------------------- |
@@ -80,87 +82,115 @@ html中的多个空格在处理时会自动减少成一个
 | '                 | \&apos;                        |
 | &                 | \&amp;                         |
 
-html的注释按如下方式书写
+html 的注释按如下方式书写
 
 ```
 <!--comment-->
 ```
 
-## 重要的head element
+## 重要的 head element
 
 `<title>`:在上面已经有阐述
 
-`<meta>`也是head里面的一类重要的element,它包含对数据的阐述(meta data),如上面指定字符集用的就是meta
+`<meta>`也是 head 里面的一类重要的 element,它包含对数据的阐述(meta data),如上面指定字符集用的就是 meta
 
-很多meta data用name和content的格式书写,我们可以利用这个添加作者和简述
+很多 meta data 用 name 和 content 的格式书写,我们可以利用这个添加作者和简述
 
 ```html
-<meta name="author" content="Chris Mills">
-<meta name="description" content="The MDN Web Docs Learning Area aims to provide
+<meta name="author" content="Chris Mills" />
+<meta
+  name="description"
+  content="The MDN Web Docs Learning Area aims to provide
 complete beginners to the Web with all they need to know to get
-started with developing web sites and applications.">
+started with developing web sites and applications."
+/>
 ```
 
-其中description会展现在搜索引擎的结果中
+其中 description 会展现在搜索引擎的结果中
 
-还有一类meta data,按property加content的格式书写,用于给一些特定的网站提供内容,如:
+还有一类 meta data,按 property 加 content 的格式书写,用于给一些特定的网站提供内容,如:
 
 ```html
-<meta property="og:image" content="https://developer.mozilla.org/static/img/opengraph-logo.png">
-<meta property="og:description" content="The Mozilla Developer Network (MDN) provides
+<meta
+  property="og:image"
+  content="https://developer.mozilla.org/static/img/opengraph-logo.png"
+/>
+<meta
+  property="og:description"
+  content="The Mozilla Developer Network (MDN) provides
 information about Open Web technologies including HTML, CSS, and APIs for both Web sites
-and HTML5 Apps. It also documents Mozilla products, like Firefox OS.">
-<meta property="og:title" content="Mozilla Developer Network">
+and HTML5 Apps. It also documents Mozilla products, like Firefox OS."
+/>
+<meta property="og:title" content="Mozilla Developer Network" />
 ```
 
-这样当我们的网站连接到Facebook时,这些信息就会展现
+这样当我们的网站连接到 Facebook 时,这些信息就会展现
 
 注意一定要按目标网站给的格式书写
 
-我们一般还会在head里面添加favicon(展现在浏览器标签上):
+我们一般还会在 head 里面添加 favicon(展现在浏览器标签上):
 
 ```html
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 ```
 
 它还有一些其他的类别
 
 ```html
 <!-- third-generation iPad with high-resolution Retina display: -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.mozilla.org/static/img/favicon144.png">
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://developer.mozilla.org/static/img/favicon144.png"
+/>
 <!-- iPhone with high-resolution Retina display: -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.mozilla.org/static/img/favicon114.png">
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="114x114"
+  href="https://developer.mozilla.org/static/img/favicon114.png"
+/>
 <!-- first- and second-generation iPad: -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.mozilla.org/static/img/favicon72.png">
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="72x72"
+  href="https://developer.mozilla.org/static/img/favicon72.png"
+/>
 <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-<link rel="apple-touch-icon-precomposed" href="https://developer.mozilla.org/static/img/favicon57.png">
+<link
+  rel="apple-touch-icon-precomposed"
+  href="https://developer.mozilla.org/static/img/favicon57.png"
+/>
 <!-- basic favicon -->
-<link rel="icon" href="https://developer.mozilla.org/static/img/favicon32.png">
+<link
+  rel="icon"
+  href="https://developer.mozilla.org/static/img/favicon32.png"
+/>
 ```
 
-在head里相当重要的一点是应用css和script:
+在 head 里相当重要的一点是应用 css 和 script:
 
 ```html
-<link rel="stylesheet" href="my-css-file.css">
+<link rel="stylesheet" href="my-css-file.css" />
 <script src="my-js-file.js" defer></script>
 ```
 
-其中script的`defer`用于让脚本在html加载完后运行避免出错,
+其中 script 的`defer`用于让脚本在 html 加载完后运行避免出错,
 
-我们可以设置html的主要语言,并同时使用其他的语言
+我们可以设置 html 的主要语言,并同时使用其他的语言
 
 ```html
 <html lang="en-US">
-<p>Japanese example: <span lang="ja">ご飯が熱い。</span>.</p>
+  <p>Japanese example: <span lang="ja">ご飯が熱い。</span>.</p>
+</html>
 ```
 
 这样可以方便搜索引擎的精确匹配和用语朗器的准确阅读
 
 ## 文本组织
 
-html提供很多element用于组织文本结构以便阅读
+html 提供很多 element 用于组织文本结构以便阅读
 
-标题可用`<h1>`,有六个h,但一般一个文件里不要用超过三个
+标题可用`<h1>`,有六个 h,但一般一个文件里不要用超过三个
 
 `<p>`用于分段
 
@@ -168,7 +198,7 @@ html提供很多element用于组织文本结构以便阅读
 
 `<ol`为有序列表,其他同上
 
-`ol`可以控制前面的数字,`start`attribute控制开始数字,`reversed`让计数从大到小,`li`的`value` attribute则可控制每一个具体的元素的表头数字.
+`ol`可以控制前面的数字,`start`attribute 控制开始数字,`reversed`让计数从大到小,`li`的`value` attribute 则可控制每一个具体的元素的表头数字.
 
 列表可以嵌套
 
@@ -176,41 +206,57 @@ html提供很多element用于组织文本结构以便阅读
 
 `<strong>`用于表示重读,一般显示效果是加粗
 
-`<b>`,`<i>`,`<u>`分别用于获得加粗,斜体,下划线,html定义了一些含义给它们,不过一般记住在超链接时可用下划线即可,如果在address等elements中想加粗也需要加
+`<b>`,`<i>`,`<u>`分别用于获得加粗,斜体,下划线,html 定义了一些含义给它们,不过一般记住在超链接时可用下划线即可,如果在 address 等 elements 中想加粗也需要加
 
-`<span>`没有特别的含义,但可用它对特定内容应用css或js
+`<span>`没有特别的含义,但可用它对特定内容应用 css 或 js
 
-`<dl>`用于使用description list，即item和definition相对应的list,`<di>`用于指定item,`<dd>`用于指定definition
+`<dl>`用于使用 description list，即 item 和 definition 相对应的 list,`<di>`用于指定 item,`<dd>`用于指定 definition
 
 ```html
 <dl>
   <dt>soliloquy</dt>
-  <dd>In drama, where a character speaks to themselves, representing their inner thoughts or feelings and in the process relaying them to the audience (but not to other characters.)</dd>
+  <dd>
+    In drama, where a character speaks to themselves, representing their inner
+    thoughts or feelings and in the process relaying them to the audience (but
+    not to other characters.)
+  </dd>
 </dl>
 ```
 
 一个`di`可对应多个`dd`
 
-我们使用`<blockquote>`表示一段内容是从别处应用的,也可以`<q>`(inline quote),区别是前者会一般会自动缩进和空上下行表明自己是block
+我们使用`<blockquote>`表示一段内容是从别处应用的,也可以`<q>`(inline quote),区别是前者会一般会自动缩进和空上下行表明自己是 block
 
 ```html
 <p>Here below is a blockquote...</p>
-<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-  <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
-  Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+<blockquote
+  cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote"
+>
+  <p>
+    The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or
+    <em>HTML Block Quotation Element</em>) indicates that the enclosed text is
+    an extended quotation.
+  </p>
 </blockquote>
-<p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
-for short quotations that don't require paragraph breaks.</q></p>
+<p>
+  The quote element — <code>&lt;q&gt;</code> — is
+  <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q"
+    >intended for short quotations that don't require paragraph breaks.</q
+  >
+</p>
 ```
 
-没有使用js和css的一般,一般引用链接的内容不会显示
+没有使用 js 和 css 的一般,一般引用链接的内容不会显示
 
 我们还会使用`<cite>`来表明引用的作者或书,默认会加上斜体,一般我们还会加上链接
 
-我们使用`<abbr>`来表明一段内容是缩写,并在title的属性里写下完整的内容(鼠标悬停显示)
+我们使用`<abbr>`来表明一段内容是缩写,并在 title 的属性里写下完整的内容(鼠标悬停显示)
 
 ```html
-<p>We use <abbr title="Hypertext Markup Language">HTML</abbr> to structure our web documents.</p>
+<p>
+  We use <abbr title="Hypertext Markup Language">HTML</abbr> to structure our
+  web documents.
+</p>
 ```
 
 注意可添加`aria-label`属性并填入和`title`一样的内容保证朗读器能读到.
@@ -219,27 +265,31 @@ for short quotations that don't require paragraph breaks.</q></p>
 
 我们使用`<sup>`和`<sub>`实现文字上下标
 
-对于代码,html也有很多的element
+对于代码,html 也有很多的 element
 
 `<code>`表示一般的代码,`<pre>`表示保留原来的空格,`<var>`表示变量名,`<kbd>`表示键盘输入,`<samp>`表示计算机程序的输出
 
 我们使用`<time>`告诉计算机一段内容是时间日期和具体的事件日期
 
 ```html
-<time datetime="2016-01-20">20 January 2016<-time>
+<time datetime="2016-01-20">20 January 2016<-time></time>
 ```
 
 ## hyperlink
 
-超链接是web中重要的组成部分,几乎所有web的内容可用指向一个链接
+超链接是 web 中重要的组成部分,几乎所有 web 的内容可用指向一个链接
 
 一般的链接如下:
 
 ```html
-<p>I'm creating a link to
-<a href="https://www.mozilla.org/en-US/"
-   title="The best place to find more information about Mozilla's
-          mission and how to contribute">the Mozilla homepage</a>.
+<p>
+  I'm creating a link to
+  <a
+    href="https://www.mozilla.org/en-US/"
+    title="The best place to find more information about Mozilla's
+          mission and how to contribute"
+    >the Mozilla homepage</a
+  >.
 </p>
 ```
 
@@ -247,7 +297,10 @@ for short quotations that don't require paragraph breaks.</q></p>
 
 ```html
 <a href="https://www.mozilla.org/en-US/">
-  <img src="mozilla-image.png" alt="mozilla logo that links to the mozilla homepage">
+  <img
+    src="mozilla-image.png"
+    alt="mozilla logo that links to the mozilla homepage"
+  />
 </a>
 ```
 
@@ -255,10 +308,13 @@ for short quotations that don't require paragraph breaks.</q></p>
 
 ```html
 <h2 id="Mailing_address">Mailing address</h2>
-<p>Want to write us a letter? Use our <a href="contacts.html#Mailing_address">mailing address</a>.</p>
+<p>
+  Want to write us a letter? Use our
+  <a href="contacts.html#Mailing_address">mailing address</a>.
+</p>
 ```
 
-`url`在超链接中被使用,指向一个web内容,它在本地使用时使用html根目录下的相对路径
+`url`在超链接中被使用,指向一个 web 内容,它在本地使用时使用 html 根目录下的相对路径
 
 如果要访问上级目录,按如下方式书写:
 
@@ -274,23 +330,25 @@ for short quotations that don't require paragraph breaks.</q></p>
 
 对于超链接的书写,我们有一系列规则
 
->1.清晰地说明指向
+> 1.清晰地说明指向
 >
->2.不要用超链接的重复形成一段内容
+> 2.不要用超链接的重复形成一段内容
 >
->3.不要用link等词汇
+> 3.不要用 link 等词汇
 >
->4.说明尽可能简短
+> 4.说明尽可能简短
 >
->5.尽量不要让相同的内容指向不同的链接
+> 5.尽量不要让相同的内容指向不同的链接
 
-当我们指向如视频流等非html内容时,更需要清楚的说明
+当我们指向如视频流等非 html 内容时,更需要清楚的说明
 
 当指定的是下载内容时,我们可以使用如下用法指定下载一个文件:
 
 ```html
-<a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-   download="firefox-latest-64bit-installer.exe">
+<a
+  href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+  download="firefox-latest-64bit-installer.exe"
+>
   Download Latest Firefox for Windows (64-bit) (English, US)
 </a>
 ```
@@ -300,30 +358,32 @@ for short quotations that don't require paragraph breaks.</q></p>
 我们可以指定多个邮箱地址:
 
 ```html
-<a href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email">
+<a
+  href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email"
+>
   Send mail with cc, bcc, subject and body
 </a>
 ```
 
-最后的body会给邮件自动填充标题名
+最后的 body 会给邮件自动填充标题名
 
 ## 网站结构
 
 一般网站由以下部分组成
 
-`header`:对网站的总介绍,一般是logo和名称,html有`<header>`与其对应
+`header`:对网站的总介绍,一般是 logo 和名称,html 有`<header>`与其对应
 
-`navigation bar`:导航栏,展现并链接到网站的主要内容的分类,一般放header里,对应的element是`<nav>`
+`navigation bar`:导航栏,展现并链接到网站的主要内容的分类,一般放 header 里,对应的 element 是`<nav>`
 
 `main content`:主要内容,对应的是`<main>`,一个网页一般只能有一个
 
-`sidebar`:侧边栏,包含一些外部的其他信息如广告,对应的是`<aside>`,一般在main中
+`sidebar`:侧边栏,包含一些外部的其他信息如广告,对应的是`<aside>`,一般在 main 中
 
 `footer`:在网站的底部,包含著作权信息或联系方式等,对应的是`footer`
 
-在main中,还一般会使用`<article>`来某些内容是一部分,`<section>`表示某些内容的功能是一样的
+在 main 中,还一般会使用`<article>`来某些内容是一部分,`<section>`表示某些内容的功能是一样的
 
-当我们找不到对应语义element时,我们使用如下的elements:
+当我们找不到对应语义 element 时,我们使用如下的 elements:
 
 `<span>` inline,`<div>` block level
 
@@ -334,12 +394,13 @@ for short quotations that don't require paragraph breaks.</q></p>
   <h2>Shopping cart</h2>
   <ul>
     <li>
-      <p><a href=""><strong>Silver earrings</strong></a>: $99.95.</p>
-      <img src="../products/3333-0985/thumb.png" alt="Silver earrings">
+      <p>
+        <a href=""><strong>Silver earrings</strong></a
+        >: $99.95.
+      </p>
+      <img src="../products/3333-0985/thumb.png" alt="Silver earrings" />
     </li>
-    <li>
-      ...
-    </li>
+    <li>...</li>
   </ul>
   <p>Total cost: $237.89</p>
 </div>
@@ -348,15 +409,17 @@ for short quotations that don't require paragraph breaks.</q></p>
 我们还有`<br>`用于让内容在新一行显示,`<hr>`用于加一条横线
 
 ```html
-<p>There once was a man named O'Dell<br>
-Who loved to write HTML<br>
-But his structure was bad, his semantics were sad<br>
-and his markup didn't read very well.</p>
+<p>
+  There once was a man named O'Dell<br />
+  Who loved to write HTML<br />
+  But his structure was bad, his semantics were sad<br />
+  and his markup didn't read very well.
+</p>
 ```
 
 思考网站结构可按如下步骤:
 
-> 1.思考大多数页面需要的elements
+> 1.思考大多数页面需要的 elements
 >
 > 2.画出页面粗结构
 >
@@ -368,7 +431,7 @@ and his markup didn't read very well.</p>
 
 ## debug
 
-html对语法并不严格，出现错误浏览器会做一定的补全
+html 对语法并不严格，出现错误浏览器会做一定的补全
 
 可以在如下网站[Ready to check - Nu Html Checker (w3.org)](https://validator.w3.org/nu/)检查错误,
 
@@ -381,12 +444,14 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 一般我们使用`<img>`来插入图片
 
 ```html
-<img src="images/dinosaur.jpg"
-     alt="The head and torso of a dinosaur skeleton;
+<img
+  src="images/dinosaur.jpg"
+  alt="The head and torso of a dinosaur skeleton;
           it has a large head with long sharp teeth"
-     width="400"
-     height="341"
-     title="A T-Rex on display in the Manchester University Museum">
+  width="400"
+  height="341"
+  title="A T-Rex on display in the Manchester University Museum"
+/>
 ```
 
 其中`alt`是当图片不显示时会显示的信息,`width`,`height`调节长宽,`title`是鼠标悬停时会显示的信息,注意`title`并不被推荐(容易出错)
@@ -395,13 +460,17 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 ```html
 <figure>
-  <img src="images/dinosaur.jpg"
-       alt="The head and torso of a dinosaur skeleton;
+  <img
+    src="images/dinosaur.jpg"
+    alt="The head and torso of a dinosaur skeleton;
             it has a large head with long sharp teeth"
-       width="400"
-       height="341">
+    width="400"
+    height="341"
+  />
 
-  <figcaption>A T-Rex on display in the Manchester University Museum.</figcaption>
+  <figcaption>
+    A T-Rex on display in the Manchester University Museum.
+  </figcaption>
 </figure>
 ```
 
@@ -409,19 +478,29 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 `figure`不一定要图片,还可以加其他的东西如视频,代码片段等
 
-如果要加装饰性的图片,使用css
+如果要加装饰性的图片,使用 css
 
 ### 视频和音频
 
-在html5前，我们使用如`flash`之类的插件播放视频,但这会带来很多问题.html5里,我们可以直接引入视频文件.
+在 html5 前，我们使用如`flash`之类的插件播放视频,但这会带来很多问题.html5 里,我们可以直接引入视频文件.
 
 ```html
-<video controls width="400" height="400"
-       autoplay loop muted preload="auto"
-       poster="poster.png">
-  <source src="rabbit320.mp4" type="video/mp4">
-  <source src="rabbit320.webm" type="video/webm">
-  <p>Your browser doesn't support HTML video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
+<video
+  controls
+  width="400"
+  height="400"
+  autoplay
+  loop
+  muted
+  preload="auto"
+  poster="poster.png"
+>
+  <source src="rabbit320.mp4" type="video/mp4" />
+  <source src="rabbit320.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="rabbit320.mp4">link to the video</a> instead.
+  </p>
 </video>
 ```
 
@@ -429,9 +508,9 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 视频会自动调整自己的纵横比,如果调整`width`等只会改变控件的大小,视频的其他地方会显示黑色或其他样式
 
-`preload`控制视频的预先加载,`none`不自动加载,`auto`自动加载,`metadata`只加载metadata
+`preload`控制视频的预先加载,`none`不自动加载,`auto`自动加载,`metadata`只加载 metadata
 
-`source`用于指示视频文件,也可以直接在video中加src,不过各个浏览器支持的视频文件格式不同,故一般需要提供多个视频文件,这就需要用到source并指定`type`,type可不指定,但会让浏览器试图加载视频以找到一个可以播放的视频
+`source`用于指示视频文件,也可以直接在 video 中加 src,不过各个浏览器支持的视频文件格式不同,故一般需要提供多个视频文件,这就需要用到 source 并指定`type`,type 可不指定,但会让浏览器试图加载视频以找到一个可以播放的视频
 
 `p`会在浏览器不支持`video`时显示
 
@@ -441,15 +520,15 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 ```html
 <video controls>
-    <source src="example.mp4" type="video/mp4">
-    <source src="example.webm" type="video/webm">
-    <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish">
+  <source src="example.mp4" type="video/mp4" />
+  <source src="example.webm" type="video/webm" />
+  <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish" />
 </video>
 ```
 
 其中`scrlang`为原来资源的语言,`label`表示`subtitles`的语言
 
-`audio`为播放音频的element,除了长宽调整和`poster`,其他基本和video相同
+`audio`为播放音频的 element,除了长宽调整和`poster`,其他基本和 video 相同
 
 ### 其他网页内容
 
@@ -457,136 +536,151 @@ html对语法并不严格，出现错误浏览器会做一定的补全
 
 ```html
 <head>
-  <style> iframe { border: none } </style>
+  <style>
+    iframe {
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <iframe src="https://developer.mozilla.org/en-US/docs/Glossary"
-          width="100%" height="500" allowfullscreen sandbox>
+  <iframe
+    src="https://developer.mozilla.org/en-US/docs/Glossary"
+    width="100%"
+    height="500"
+    allowfullscreen
+    sandbox
+  >
     <p>
       <a href="/en-US/docs/Glossary">
-         Fallback link for browsers that don't support iframes
+        Fallback link for browsers that don't support iframes
       </a>
     </p>
   </iframe>
 </body>
 ```
 
-其中`allowfullscreen`会让调用的内容通过api支持全屏,`sandbox`则表明该内容使用更安全的设置,`p`和video一样,为不支持iframe时显示的文字,上面的style里面去除了调用时会显示的边框.
+其中`allowfullscreen`会让调用的内容通过 api 支持全屏,`sandbox`则表明该内容使用更安全的设置,`p`和 video 一样,为不支持 iframe 时显示的文字,上面的 style 里面去除了调用时会显示的边框.
 
-使用此element会带来很多安全性问题,但不需要过于担心,只需要多注意,并做些措施:
+使用此 element 会带来很多安全性问题,但不需要过于担心,只需要多注意,并做些措施:
 
 > 1.只在真的需要时使用
 >
-> 2.网站使用https(一般都会设置好,如果需要自己设置,看[Let's Encrypt]([Let's Encrypt (letsencrypt.org)](https://letsencrypt.org/))获取帮助)
+> 2.网站使用 https(一般都会设置好,如果需要自己设置,看[Let's Encrypt]([Let's Encrypt (letsencrypt.org)](https://letsencrypt.org/))获取帮助)
 >
 > 3.记得使用`sandbox`,这可以让引入的内容只能加载必要的事物
 >
-> 4.在自己的网站设置好csp( *[configure your server to send an appropriate `X-Frame-Options` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)*),防止别人随意引用你的网站内容
+> 4.在自己的网站设置好 csp( _[configure your server to send an appropriate `X-Frame-Options` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)_),防止别人随意引用你的网站内容
 
-`embde`和`object`用于嵌入需要插件支持的内容(如flash),因为插件的不便和安全性问题等,现在已经不推荐使用,如果要使用的话看下表
+`embde`和`object`用于嵌入需要插件支持的内容(如 flash),因为插件的不便和安全性问题等,现在已经不推荐使用,如果要使用的话看下表
 
-|                                                              | `<embda>`                                                    | `<object>`                                                   |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [URL](https://developer.mozilla.org/en-US/docs/Glossary/URL) of the embedded content | [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-src) | [`data`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-data) |
-| *accurate* [media type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of the embedded content | [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-type) | [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-type) |
-| height and width (in CSS pixels) of the box controlled by the plugin | [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-height) [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-width) | [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-height) [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-width) |
-| names and values, to feed the plugin as parameters           | ad hoc attributes with those names and values                | single-tag `<param>` elements, contained within `<object>`   |
-| independent HTML content as fallback for an unavailable resource | not supported (`<noembed>` is obsolete)                      | contained within `<object>`, after `<param>` elements        |
+|                                                                                                              | `<embda>`                                                                                                                                                                     | `<object>`                                                                                                                                                                      |
+| :----------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [URL](https://developer.mozilla.org/en-US/docs/Glossary/URL) of the embedded content                         | [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-src)                                                                                             | [`data`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-data)                                                                                            |
+| _accurate_ [media type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of the embedded content | [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-type)                                                                                           | [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-type)                                                                                            |
+| height and width (in CSS pixels) of the box controlled by the plugin                                         | [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-height) [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#attr-width) | [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-height) [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#attr-width) |
+| names and values, to feed the plugin as parameters                                                           | ad hoc attributes with those names and values                                                                                                                                 | single-tag `<param>` elements, contained within `<object>`                                                                                                                      |
+| independent HTML content as fallback for an unavailable resource                                             | not supported (`<noembed>` is obsolete)                                                                                                                                       | contained within `<object>`, after `<param>` elements                                                                                                                           |
 
 ### vector graphics
 
-vector graphics比位图好的方面是放大缩小不会失真，而且在其中的文字可以直接访问，便于修改样式和使用脚本等。
+vector graphics 比位图好的方面是放大缩小不会失真，而且在其中的文字可以直接访问，便于修改样式和使用脚本等。
 
 不好的地方有复杂图像文件变得很大，很难制作，老浏览器不支持等。
 
-可以直接使用img引入
+可以直接使用 img 引入
 
 ```html
 <img
-    src="equilateral.svg"
-    alt="triangle with all three sides equal"
-    height="87"
-    width="100" />
+  src="equilateral.svg"
+  alt="triangle with all three sides equal"
+  height="87"
+  width="100"
+/>
 ```
 
-但这样使用脚本和css比较麻烦(只能在svg文件内使用css)
+但这样使用脚本和 css 比较麻烦(只能在 svg 文件内使用 css)
 
 我们还可以这样使用
 
 ```html
-<img src="equilateral.png" alt="triangle with equal sides" srcset="equilateral.svg">
+<img
+  src="equilateral.png"
+  alt="triangle with equal sides"
+  srcset="equilateral.svg"
+/>
 ```
 
-这样不支持svg的浏览器会加载png,支持的会加载svg
+这样不支持 svg 的浏览器会加载 png,支持的会加载 svg
 
-我们可以直接将svg的代码放入html(inline svg)
+我们可以直接将 svg 的代码放入 html(inline svg)
 
 ```html
 <svg width="300" height="200">
-    <rect width="100%" height="100%" fill="green" />
+  <rect width="100%" height="100%" fill="green" />
 </svg>
 ```
 
-这样可以加快加载速度,更方便地使用css
+这样可以加快加载速度,更方便地使用 css
 
-但这样浏览器不能缓存它,且如果有应急代替图片,支持svg的浏览器也会下载
+但这样浏览器不能缓存它,且如果有应急代替图片,支持 svg 的浏览器也会下载
 
 我们还可以使用`iframe`
 
 ```html
 <iframe src="triangle.svg" width="500" height="500" sandbox>
-    <img src="triangle.png" alt="Triangle with three unequal sides" />
+  <img src="triangle.png" alt="Triangle with three unequal sides" />
 </iframe>
 ```
 
-这样只会当浏览器不支持iframe时显示fallback,但这样也会导致不能使用js操作
+这样只会当浏览器不支持 iframe 时显示 fallback,但这样也会导致不能使用 js 操作
 
 ### responsive image
 
-用户的设备有不同的大小和分辨率，有时我们需要根据大小显示不同的图片(art direction problem),有时我们需要根据用户的分辨率选中不同分辨率的图片(resolution switching problem),这需要借助html里面的element,因为css和js会在网页加载前加载,那是图片的element还没有加载无法控制.
+用户的设备有不同的大小和分辨率，有时我们需要根据大小显示不同的图片(art direction problem),有时我们需要根据用户的分辨率选中不同分辨率的图片(resolution switching problem),这需要借助 html 里面的 element,因为 css 和 js 会在网页加载前加载,那是图片的 element 还没有加载无法控制.
 
 解决第二个问题使用`img`的属性:
 
 首先解决在不同尺寸下的分辨率调节
 
 ```html
-<img srcset="elva-fairy-480w.jpg 480w,
-             elva-fairy-800w.jpg 800w"
-     sizes="(max-width: 600px) 480px,
+<img
+  srcset="elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w"
+  sizes="(max-width: 600px) 480px,
             800px"
-     src="elva-fairy-800w.jpg"
-     alt="Elva dressed as a fairy">
+  src="elva-fairy-800w.jpg"
+  alt="Elva dressed as a fairy"
+/>
 ```
 
-其中`srcset`提供供选中的图片和相应的分辨率(注意单位是w),`sizes`里面是条件和对应选中的分辨率,如果无匹配的,选中第一个比选中的分辨率大的图片,最后一个没有条件指的是无其他匹配时选中,
+其中`srcset`提供供选中的图片和相应的分辨率(注意单位是 w),`sizes`里面是条件和对应选中的分辨率,如果无匹配的,选中第一个比选中的分辨率大的图片,最后一个没有条件指的是无其他匹配时选中,
 
 然后解决在相同尺寸下的分辨率调节
 
 ```html
-<img srcset="elva-fairy-320w.jpg,
-             elva-fairy-480w.jpg 1.5x,
-             elva-fairy-640w.jpg 2x"
-     src="elva-fairy-640w.jpg"
-     alt="Elva dressed as a fairy">
+<img
+  srcset="elva-fairy-320w.jpg, elva-fairy-480w.jpg 1.5x, elva-fairy-640w.jpg 2x"
+  src="elva-fairy-640w.jpg"
+  alt="Elva dressed as a fairy"
+/>
 ```
 
-其中1.5x等指的是和默认分辨率的比值,默认分辨率不用写1x
+其中 1.5x 等指的是和默认分辨率的比值,默认分辨率不用写 1x
 
-解决art direction问题,我们使用`picture`
+解决 art direction 问题,我们使用`picture`
 
 ```html
 <picture>
-  <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg">
-  <source media="(min-width: 800px)" srcset="elva-800w.jpg">
-  <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva">
+  <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg" />
+  <source media="(min-width: 800px)" srcset="elva-800w.jpg" />
+  <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva" />
 </picture>
 ```
 
-`media`为设备的大小条件,注意不要同时写sizes,`img`必须写,提供一个没有匹配时的图片显示选择或不支持picture时的图片选择,如果不提供则不会显示图片
+`media`为设备的大小条件,注意不要同时写 sizes,`img`必须写,提供一个没有匹配时的图片显示选择或不支持 picture 时的图片选择,如果不提供则不会显示图片
 
 ## table
 
-在网页中我们经常需要处理表格数据，于是html提高了`table`供我们使用
+在网页中我们经常需要处理表格数据，于是 html 提高了`table`供我们使用
 
 最简单的情况是添加一行:
 
@@ -620,21 +714,21 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 ```html
 <table>
-    <tr>
-        <th colspan="2">Animals</th>
-    </tr>
+  <tr>
+    <th colspan="2">Animals</th>
+  </tr>
 </table>
 ```
 
-这样表示占据2列,类似的还有`rowspan`
+这样表示占据 2 列,类似的还有`rowspan`
 
-对表格的一行修改样式我们可以直接在`tr`中修改,但对于一列只能一个个元素改,这显然没有效率,于是html提高了`col`:
+对表格的一行修改样式我们可以直接在`tr`中修改,但对于一列只能一个个元素改,这显然没有效率,于是 html 提高了`col`:
 
 ```html
 <table>
   <colgroup>
-    <col>
-    <col style="background-color: yellow">
+    <col />
+    <col style="background-color: yellow" />
   </colgroup>
   <tr>
     <th>Data 1</th>
@@ -657,64 +751,66 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 ```html
 <table>
-  <caption>Dinosaurs in the Jurassic period</caption>
+  <caption>
+    Dinosaurs in the Jurassic period
+  </caption>
 
   ...
 </table>
 ```
 
-这会显示在屏幕上,用table 的`summary`属性则不会显示在屏幕上,故我们一般使用`caption`
+这会显示在屏幕上,用 table 的`summary`属性则不会显示在屏幕上,故我们一般使用`caption`
 
 当表变得复杂时,我们需要加一些结构用以方便处理表的样式等属性
 
 ```html
 <table>
-    <thead>
-        <tr>
-            <th>Purchase</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Evaluation</th>
-            <th>Cost (€)</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th colspan="4">SUM</th>
-            <td>118</td>
-        </tr>
-    </tfoot>
+  <thead>
     <tr>
-        <td>Haircut</td>
-        <td>Hairdresser</td>
-        <td>12/09</td>
-        <td>Great idea</td>
-        <td>30</td>
+      <th>Purchase</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Evaluation</th>
+      <th>Cost (€)</th>
     </tr>
-    <tbody>
-        <tr>
-            <td>Lasagna</td>
-            <td>Restaurant</td>
-            <td>12/09</td>
-            <td>Regrets</td>
-            <td>18</td>
-        </tr>
-        <tr>
-            <td>Shoes</td>
-            <td>Shoeshop</td>
-            <td>13/09</td>
-            <td>Big regrets</td>
-            <td>65</td>
-        </tr>
-    </tbody>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan="4">SUM</th>
+      <td>118</td>
+    </tr>
+  </tfoot>
+  <tr>
+    <td>Haircut</td>
+    <td>Hairdresser</td>
+    <td>12/09</td>
+    <td>Great idea</td>
+    <td>30</td>
+  </tr>
+  <tbody>
+    <tr>
+      <td>Lasagna</td>
+      <td>Restaurant</td>
+      <td>12/09</td>
+      <td>Regrets</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Shoes</td>
+      <td>Shoeshop</td>
+      <td>13/09</td>
+      <td>Big regrets</td>
+      <td>65</td>
+    </tr>
+  </tbody>
 </table>
 ```
 
-`thead`用于表示表头,通常第一行,`tfoot`围住表的foot(通常是最后一行或总结的那一行),`tbody`则围住剩下的table的部分,如果我们没有添加这些,浏览器会默认将table的所有内容放进`tbody`
+`thead`用于表示表头,通常第一行,`tfoot`围住表的 foot(通常是最后一行或总结的那一行),`tbody`则围住剩下的 table 的部分,如果我们没有添加这些,浏览器会默认将 table 的所有内容放进`tbody`
 
-表可以嵌套,不过一般不这么干,只在确实需要时这么操作,嵌套只需要将另一个表放进`td`等element即可
+表可以嵌套,不过一般不这么干,只在确实需要时这么操作,嵌套只需要将另一个表放进`td`等 element 即可
 
-对于视觉受损的人群,我们需要将表中的元素关系阐述清楚以便它们使用阅读器,除了用`th`外,我们还可以为th添加`scope`属性:
+对于视觉受损的人群,我们需要将表中的元素关系阐述清楚以便它们使用阅读器,除了用`th`外,我们还可以为 th 添加`scope`属性:
 
 ```html
 <thead>
@@ -733,28 +829,27 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
   <tr>
     <th id="purchase">Purchase</th>
     <th id="location">Location</th>
-    <th id="date">Date<-th>
+    <th id="date">Date<-th></th>
     <th id="evaluation">Evaluation</th>
     <th id="cost">Cost (€)</th>
   </tr>
 </thead>
 <tbody>
-<tr>
-  <th id="haircut">Haircut</th>
-  <td headers="location haircut">Hairdresser</td>
-  <td headers="date haircut">12-09<-td>
-  <td headers="evaluation haircut">Great idea</td>
-  <td headers="cost haircut">30</td>
-</tr>
+  <tr>
+    <th id="haircut">Haircut</th>
+    <td headers="location haircut">Hairdresser</td>
+    <td headers="date haircut">12-09<-td></td>
+    <td headers="evaluation haircut">Great idea</td>
+    <td headers="cost haircut">30</td>
+  </tr>
 
   ...
-
 </tbody>
 ```
 
 ## form
 
-`web forms`用于用户与网页进行交互，它有很多的`form controls(widgets)`和一些辅助的element组成,并可验证输入的数据格式(`form validation`)
+`web forms`用于用户与网页进行交互，它有很多的`form controls(widgets)`和一些辅助的 element 组成,并可验证输入的数据格式(`form validation`)
 
 ### base
 
@@ -762,31 +857,31 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 ```html
 <form action="/my-handling-form-page" method="post">
-	<li class="button">
-      	<button type="submit">Send your message</button>
-    </li>
+  <li class="button">
+    <button type="submit">Send your message</button>
+  </li>
 </form>
 ```
 
-其中`action`指数据送往的`url`,`method`指http请求类型.`button`的类型是`submit`,点击它即会传送数据并打开相关界面.
-注意如果`form`会发送文件,我们需要设置`enctype="multipart/form-data"`,因为发送的数据会被分为多个部分,每个文件一部分,文本数据一部分,而且method需要被设置为`post`,`get`会将数据附在url中发送,这对文件显然是不可能的.而且一定要设置value.
+其中`action`指数据送往的`url`,`method`指 http 请求类型.`button`的类型是`submit`,点击它即会传送数据并打开相关界面.
+注意如果`form`会发送文件,我们需要设置`enctype="multipart/form-data"`,因为发送的数据会被分为多个部分,每个文件一部分,文本数据一部分,而且 method 需要被设置为`post`,`get`会将数据附在 url 中发送,这对文件显然是不可能的.而且一定要设置 value.
 
-在`form`中,我们使用`fieldset`来组合一系列widget用于同种功能,这对如`radio`之类的widget尤为重要:
+在`form`中,我们使用`fieldset`来组合一系列 widget 用于同种功能,这对如`radio`之类的 widget 尤为重要:
 
 ```html
 <form>
   <fieldset>
     <legend>Fruit juice size</legend>
     <p>
-      <input type="radio" name="size" id="size_1" value="small">
+      <input type="radio" name="size" id="size_1" value="small" />
       <label for="size_1">Small</label>
     </p>
     <p>
-      <input type="radio" name="size" id="size_2" value="medium">
+      <input type="radio" name="size" id="size_2" value="medium" />
       <label for="size_2">Medium</label>
     </p>
     <p>
-      <input type="radio" name="size" id="size_3" value="large">
+      <input type="radio" name="size" id="size_3" value="large" />
       <label for="size_3">Large</label>
     </p>
   </fieldset>
@@ -797,32 +892,36 @@ vector graphics比位图好的方面是放大缩小不会失真，而且在其�
 
 我们也可以使用`section`来分隔`form`,通常的写法是`section`分隔大功能,`fieldset`分隔一些小功能.
 
-我们使用`label`对一个widget的功能进行说明:
+我们使用`label`对一个 widget 的功能进行说明:
 
 ```html
-<label for="name">Name:</label> <input type="text" id="name" name="user_name">
+<label for="name">Name:</label> <input type="text" id="name" name="user_name" />
 ```
 
 也可以写成这样的格式:
 
 ```html
 <label for="name">
-  Name: <input type="text" id="name" name="user_name">
+  Name: <input type="text" id="name" name="user_name" />
 </label>
 ```
 
-其中`for`指widget的id,后者并不需要加`for`,不过一般还是推荐加上.
+其中`for`指 widget 的 id,后者并不需要加`for`,不过一般还是推荐加上.
 
-`label`被点击时,对应的widget也会工作.
+`label`被点击时,对应的 widget 也会工作.
 
 推荐每一个`widget`只有一个`label`.
+
 ### html5 input type
-html5中引入了许多新的`input type`便于使用.
+
+html5 中引入了许多新的`input type`便于使用.
 `email`用于表示输入邮箱.它会检查邮箱格式,错误的话发送数据时会报错.
 可以利用`multiple`输入多个邮箱(逗号分隔):
+
 ```html
-<input type="email" id="email" name="email" multiple>
+<input type="email" id="email" name="email" multiple />
 ```
+
 `search`用于表示搜索框,与`text`不同的点是浏览器渲染的样式不同.有些浏览器还有自动保存搜索关键字的功能.
 `tel`用于输入电话号码.
 `url`用于输入链接.
@@ -830,44 +929,70 @@ html5中引入了许多新的`input type`便于使用.
 我们可以设置最大最小值与增减数字的大小:
 
 ```html
-<input type="number" name="age" id="age" min="1" max="10" step="2">
+<input type="number" name="age" id="age" min="1" max="10" step="2" />
 ```
+
 `step`的值可以是浮点数.
 `slider`用于设置一个滑动条,它用于精确值不重要的情况.一般需要正确设置最大最小,增减值,初始值等要素:
+
 ```html
 <label for="price">Choose a maximum house price: </label>
-<input type="range" name="price" id="price" min="50000" max="500000" step="100" value="250000">
+<input
+  type="range"
+  name="price"
+  id="price"
+  min="50000"
+  max="500000"
+  step="100"
+  value="250000"
+/>
 <output class="price-output" for="price"></output>
 ```
-一般还会加一个`output`的element再使用js显示当前值.
-html5还添加了多个可获取时间的type.
+
+一般还会加一个`output`的 element 再使用 js 显示当前值.
+html5 还添加了多个可获取时间的 type.
 `datetime-local`用于获取年月日和当前时刻等所有信息.
 `month`用于获取月份.
-`time`用于获取当前时刻(返回24小时制).
+`time`用于获取当前时刻(返回 24 小时制).
 `week`用于获取某年的第几周.
 `date`用于获取年月日.
 它们均可使用`max`,`min`,`step`等进行控制:
+
 ```html
-<input type="date" name="myDate" min="2013-06-01" max="2013-08-31" step="7" id="myDate">
+<input
+  type="date"
+  name="myDate"
+  min="2013-06-01"
+  max="2013-08-31"
+  step="7"
+  id="myDate"
+/>
 ```
-`color`用于获取颜色,一般返回6位16进制小写的信息.
+
+`color`用于获取颜色,一般返回 6 位 16 进制小写的信息.
+
 ### other form controls
+
 多行输入：
+
 ```html
 <textarea cols="30" rows="8">content</textarea>
 ```
-中间的内容会作为默认值.可以放如何内容,即使是html语句也会被当初普通的字符串(可通过 [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable)修改).
-它有三个控制多行显示的attributes:
-- `cols`,控制显示的宽度,值为一个正整数,单位为平均字符宽度,默认是20.
-- `rows`,显示的行数,默认为2.
+
+中间的内容会作为默认值.可以放如何内容,即使是 html 语句也会被当初普通的字符串(可通过 [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable)修改).
+它有三个控制多行显示的 attributes:
+
+- `cols`,控制显示的宽度,值为一个正整数,单位为平均字符宽度,默认是 20.
+- `rows`,显示的行数,默认为 2.
 - `wrap`,控制换行,默认为`soft`,显示换行而发送的数据不换行,`hard`都都换行,`off`为都不换.
-我们还可以通过`resize`控制它是否可以通过拖动右下角改变大小:
--   `both`: 默认,水平垂直都可以改变.
--   `horizontal`: 仅水平.
--   `vertical`: 仅垂直.
--   `none`: 不可以改变.
--   `block` and `inline`: 在block或inline的方向可以改变,实验性的值.
-我们可以通过`select`生成一个有下拉菜单选择的control:
+  我们还可以通过`resize`控制它是否可以通过拖动右下角改变大小:
+- `both`: 默认,水平垂直都可以改变.
+- `horizontal`: 仅水平.
+- `vertical`: 仅垂直.
+- `none`: 不可以改变.
+- `block` and `inline`: 在 block 或 inline 的方向可以改变,实验性的值.
+  我们可以通过`select`生成一个有下拉菜单选择的 control:
+
 ```html
 <select id="simple" name="simple">
   <option>Banana</option>
@@ -875,8 +1000,10 @@ html5还添加了多个可获取时间的type.
   <option>Lemon</option>
 </select>
 ```
+
 默认值通过在`option`填上`selected`属性来设置.
 通过`optgroup`来将`option`分组:
+
 ```
 <select id="groups" name="groups">
   <optgroup label="fruits">
@@ -891,13 +1018,15 @@ html5还添加了多个可获取时间的type.
   </optgroup>
 </select>
 ```
+
 `option`可以使用`value`属性来控制被选中时发送的数据.默认会将它包裹的内容作为`value`.
-默认该control只显示一行,可以使用`size`来显示多行,值即为显示的行数.
+默认该 control 只显示一行,可以使用`size`来显示多行,值即为显示的行数.
 添加`mutiple`允许用户选中多个.
 `datelist`可以被用来为`input`添加自动补全的内容:
+
 ```html
 <label for="myFruit">What's your favorite fruit?</label>
-<input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+<input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
 <datalist id="mySuggestion">
   <option>Apple</option>
   <option>Banana</option>
@@ -909,25 +1038,31 @@ html5还添加了多个可获取时间的type.
   <option>Pear</option>
 </datalist>
 ```
+
 在不支持`datalist`的浏览器可以通过在它中间添加`label`和`select`来处理,支持的浏览器会忽略`select`等有正常的补全,不支持的则会显示它们.
 它偶尔还会被用于一些特殊的用途,如让`input-range`有确定的值供点选,`input-color`有初始的自定义颜色.
 `progress`用于显示和`max`相比的比例:
+
 ```html
 <progress max="100" value="75">75/100</progress>
 ```
-`meter`用于显示值处理哪里范围,`min`和`low`之间为lower,`low`和`high`之间为`medium`,`high`和`max`之间为higher.
-然后我们定义`optinum`,即最优值.
--   若它在lower,则 the lower range 为preferred part, the medium range为the average part, and the higher range 为 worst part.
--  若在medium, the lower 为 average, the medium为preferred,higher range is 为average.
--   若在 higher,  lower =>worst part, medium=>average part , higher=>preferred part.
-一般而已,preferred时显示绿色,average时显示黄色,worst时显示红色.
-`progress`和`meter`包裹的内容会作为不支持浏览器的显示或屏幕阅读器的读取部分.
-### Client-side form validation
-在发送数据前，我们需要对用户的数据进行验证,看看是否符合规范.
-html5提供了很多个attribute来验证:
--   [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required): 标出哪个control的数据是必须的.
--   [`minlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/minlength) and [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength): 输入数据的长度的最小长度或最大长度.在实践中一般只指定后者.
--   [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min) and [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max): 对于数字输入,指定最小值最大值.注意旁边的增减按钮也会被限定在此范围.
--   `type`: 指定数据必须符合的类型.
--   [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern): 使用正则表达式指定数据必须符合的规范.注意`textarea`不支持.
 
+`meter`用于显示值处理哪里范围,`min`和`low`之间为 lower,`low`和`high`之间为`medium`,`high`和`max`之间为 higher.
+然后我们定义`optinum`,即最优值.
+
+- 若它在 lower,则 the lower range 为 preferred part, the medium range 为 the average part, and the higher range 为 worst part.
+- 若在 medium, the lower 为 average, the medium 为 preferred,higher range is 为 average.
+- 若在 higher, lower =>worst part, medium=>average part , higher=>preferred part.
+  一般而已,preferred 时显示绿色,average 时显示黄色,worst 时显示红色.
+  `progress`和`meter`包裹的内容会作为不支持浏览器的显示或屏幕阅读器的读取部分.
+
+### Client-side form validation
+
+在发送数据前，我们需要对用户的数据进行验证,看看是否符合规范.
+html5 提供了很多个 attribute 来验证:
+
+- [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required): 标出哪个 control 的数据是必须的.
+- [`minlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/minlength) and [`maxlength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength): 输入数据的长度的最小长度或最大长度.在实践中一般只指定后者.
+- [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min) and [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max): 对于数字输入,指定最小值最大值.注意旁边的增减按钮也会被限定在此范围.
+- `type`: 指定数据必须符合的类型.
+- [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern): 使用正则表达式指定数据必须符合的规范.注意`textarea`不支持.

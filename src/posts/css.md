@@ -8,7 +8,7 @@ updated: 2021-12-23
 
 对 MDN web docs 中[css](https://developer.mozilla.org/en-US/docs/Learn/CSS)的学习的个人总结.
 
-<!--more-->
+<!-- more -->
 
 ## base
 

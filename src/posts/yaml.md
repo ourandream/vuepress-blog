@@ -4,14 +4,16 @@ categories: language
 date: 2022-05-24 23:20:44
 updated: 2022-05-25 00:41:40
 ---
-yaml是一种可读性高的数据组织语言,通常用于设置文件。本文基于[YAML Tutorial in Cloudbees Blog](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
-<!--more-->
+
+yaml 是一种可读性高的数据组织语言,通常用于设置文件。本文基于[YAML Tutorial in Cloudbees Blog](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
+
+<!-- more -->
 
 ## 基本概念
 
-yaml以`---`作为数据(document)的开始,以`...`作为数据的结尾.
+yaml 以`---`作为数据(document)的开始,以`...`作为数据的结尾.
 
-yaml多层嵌套可用多个相同的空格数表示(通常为2个或4个,不可以使用tab).
+yaml 多层嵌套可用多个相同的空格数表示(通常为 2 个或 4 个,不可以使用 tab).
 
 例子:
 
@@ -37,9 +39,9 @@ location: "a pear tree"
 turtle-doves: two
 ```
 
-注意key,value直接有一个空格.
+注意 key,value 直接有一个空格.
 
-yaml以`#`表示注释:
+yaml 以`#`表示注释:
 
 ```yaml
 ## This is a full line comment
@@ -62,7 +64,7 @@ plop: 023332
 ```yaml
 ---
 foo: 1230.15
-bar:  12.3015e+05
+bar: 12.3015e+05
 ```
 
 特殊数字:
@@ -137,8 +139,8 @@ WHY2: NO
 
 ```yaml
 ---
-items: [ 1, 2, 3, 4, 5 ]
-names: [ "one", "two", "three", "four" ]
+items: [1, 2, 3, 4, 5]
+names: ["one", "two", "three", "four"]
 ```
 
 多行:
@@ -160,7 +162,7 @@ names:
 
 数组内值的类型不需要相同.
 
-yaml一个文件处理出来的本身就是一个字典:
+yaml 一个文件处理出来的本身就是一个字典:
 
 ```yaml
 ---
@@ -170,8 +172,6 @@ foo:
     - rab
     - plop
 ```
-
-
 
 除此之外还能单行:
 
@@ -186,10 +186,7 @@ foo: { thing1: huey, thing2: louie, thing3: dewey }
 
 ```yaml
 bar: >+
-  this is not a normal string it
-  spans more than
-  one line
-  see?
+  this is not a normal string itspans more thanone linesee?
 ```
 
 不保留:
@@ -202,27 +199,13 @@ bar: |-
   see?
 ```
 
-正如上面所说,yaml中以`---`开头,以`...`结尾.`...`一般是可选的,不过当文件中有多个数据时,它是必须的:
+正如上面所说,yaml 中以`---`开头,以`...`结尾.`...`一般是可选的,不过当文件中有多个数据时,它是必须的:
 
 ```yaml
 ---
 bar: foo
 foo: bar
-...
 ---
 one: two
 three: four
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-

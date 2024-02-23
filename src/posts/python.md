@@ -7,10 +7,15 @@ abbrlink: a4d4b8b8
 date: 2021-12-23 18:23:20
 updated: 2022-04-05 15:04:21
 ---
-python相关内容的笔记。
-<!--more-->
+
+python 相关内容的笔记。
+
+<!-- more -->
+
 ## base
+
 ### 注释:
+
 ```python
 #这是单行
 '''
@@ -22,58 +27,62 @@ python相关内容的笔记。
 这也是多行注释
 """
 ```
+
 ### 杂七杂八
-python支持转义字符,如\n,若想让某个字符中转移字符等失效,在字符串前加r或R
+
+python 支持转义字符,如\n,若想让某个字符中转移字符等失效,在字符串前加 r 或 R
+
 ```python
 r'\\n'
 ```
 
-python中不需要声明变量,直接使用即可,变量名的首个字符需要是_或字母,其余部分可以是_或字母或数字
+python 中不需要声明变量,直接使用即可,变量名的首个字符需要是*或字母,其余部分可以是*或字母或数字
 
+在 python 中,一切皆对象,如字符串就是一种对象
 
+在 python 中,执行程序时是一句一句执行的,一个物理行(自己看见的)对应一个逻辑行(python 看见的),若想让一个语句有多行或一行有多个语句,可以按如下语法书写:
 
-在python中,一切皆对象,如字符串就是一种对象
-
-在python中,执行程序时是一句一句执行的,一个物理行(自己看见的)对应一个逻辑行(python看见的),若想让一个语句有多行或一行有多个语句,可以按如下语法书写:
 ```python
 i=\
 5
 
 i=3;i=5
 ```
-在python中,缩进用于指定语句块,拥有同样缩进的语句属于一个语句块
-一次缩进大概四格(推荐使用tab键)
+
+在 python 中,缩进用于指定语句块,拥有同样缩进的语句属于一个语句块
+一次缩进大概四格(推荐使用 tab 键)
 
 range:
+
 ```python
 print(list(range(1,5)))#结果为[1, 2, 3, 4]
 print(list(range(1,5,2)))#2为步长,结果为[1, 3]
 ```
 
 len:
+
 ```python
 print(len('1234'))#输出字符串长度
 ```
-int不可使用len,list、tuple、set则可以
 
-eval函数把字符串当成一个python语句并执行,常用于将输入的字符串转化为数字或元组
+int 不可使用 len,list、tuple、set 则可以
 
-python变量名加上前缀dummy_,如dummy_i,则该变量不会被检查,此操作可解决警告说变量未被使用
+eval 函数把字符串当成一个 python 语句并执行,常用于将输入的字符串转化为数字或元组
 
-numpy.loadtxt()用于读取每行两个数字的txt文件
-用分号间隔一行中的多个的python语句
-str.lower()使得str的切片从左闭右开变成两边都闭,且大写字母变小写字母
-round(number[, ndigits])取近似,如-0.5取0,0.5取0,规则是四舍五入,后面的ndigits表示精确到几个小数位,默认是0，负数代表在整数部分四舍五入，如123若位数为-2则会变成100
+python 变量名加上前缀 dummy\_,如 dummy_i,则该变量不会被检查,此操作可解决警告说变量未被使用
 
-sum中若有tuple或list或set，会把里面的元素相加再与外面的元素相加，注意set的互异性会导致相同的元素消失
+numpy.loadtxt()用于读取每行两个数字的 txt 文件
+用分号间隔一行中的多个的 python 语句
+str.lower()使得 str 的切片从左闭右开变成两边都闭,且大写字母变小写字母
+round(number[, ndigits])取近似,如-0.5 取 0,0.5 取 0,规则是四舍五入,后面的 ndigits 表示精确到几个小数位,默认是 0，负数代表在整数部分四舍五入，如 123 若位数为-2 则会变成 100
 
-int转化浮点数向下取整，int转化还可指定要转化的数的base，如`int('101',2)`转化为5
+sum 中若有 tuple 或 list 或 set，会把里面的元素相加再与外面的元素相加，注意 set 的互异性会导致相同的元素消失
 
-id函数用于查看对象内存地址
+int 转化浮点数向下取整，int 转化还可指定要转化的数的 base，如`int('101',2)`转化为 5
 
-python 中`2<3>1` 相当于`2<3 and 3>1` 
+id 函数用于查看对象内存地址
 
-
+python 中`2<3>1` 相当于`2<3 and 3>1`
 
 lambda 匿名函数
 
@@ -81,17 +90,11 @@ lambda 匿名函数
 <函数名> = lambda <参数列表>: <表达式>
 ```
 
-这样函数名可以使用函数结果,也可视为一个函数名,即也可以f(参数)
+这样函数名可以使用函数结果,也可视为一个函数名,即也可以 f(参数)
 
-
-
-map(f,list),将f依次作用于list,并返回list
-
-
+map(f,list),将 f 依次作用于 list,并返回 list
 
 若想去掉运行时的黑窗口，将后缀改为`pyw`而不是`py`
-
-
 
 获取年月日
 
@@ -119,10 +122,6 @@ time=datetime.datetime()
 t.strftime("%Y/%m/%d %H:%M:%S")
 ```
 
-
-
-
-
 求定积分
 
 ```python
@@ -134,12 +133,13 @@ integrate.quad(f,-math.inf,i,args=(m,s))[0]
 极大数：`float('inf')`
 
 ## 数据结构
-python有四种基本的数据结构,即list 	tuple dictionary and set
-python的数字类型有int float complex，complex即复数，写成1+4j的形式，注意j也可大写
+
+python 有四种基本的数据结构,即 list tuple dictionary and set
+python 的数字类型有 int float complex，complex 即复数，写成 1+4j 的形式，注意 j 也可大写
 
 ### 序列
 
-上述两种结构都是序列的一种,序列可进行索引操作，和c++中的数组索引类似，不同的操作如下
+上述两种结构都是序列的一种,序列可进行索引操作，和 c++中的数组索引类似，不同的操作如下
 切片:
 
 ```python
@@ -163,17 +163,19 @@ shoplist[::-1]
 
 其他操作：
 
-| 操作                                                         | 功能                                 |
-| ------------------------------------------------------------ | ------------------------------------ |
-| x in s \| x not in s                                         | 判断是否在s中                        |
-| a.index(x)<br />后可加参数,指定[a,b)<br />也可只加一个,指定a到末尾 | x在a中的第一次出现的下标，没有则报错 |
-| a.count(x)                                                   | x在a中出现的次数                     |
-| s+t                                                          | 连接s、t                             |
-| s*n(或者倒过来)                                              | s复制n词                             |
-| *s                                                           | 将序列分解为一个个元素               |
+| 操作                                                                 | 功能                                    |
+| -------------------------------------------------------------------- | --------------------------------------- |
+| x in s \| x not in s                                                 | 判断是否在 s 中                         |
+| a.index(x)<br />后可加参数,指定[a,b)<br />也可只加一个,指定 a 到末尾 | x 在 a 中的第一次出现的下标，没有则报错 |
+| a.count(x)                                                           | x 在 a 中出现的次数                     |
+| s+t                                                                  | 连接 s、t                               |
+| s\*n(或者倒过来)                                                     | s 复制 n 词                             |
+| \*s                                                                  | 将序列分解为一个个元素                  |
 
 ### list
+
 即一类相同的对象组成的有序序列
+
 ```python
 shoplist = ['apple', 'mango', 'carrot', 'banana']#创建list
 shoplist.append('rice')#在list的末尾添加元素
@@ -204,15 +206,13 @@ i=list(set(i))
 i.sort(key=t.index)
 ```
 
-注意遍历list不能修改list的值，必须通过具体的索引修改：
+注意遍历 list 不能修改 list 的值，必须通过具体的索引修改：
 
 ```python
  for i in range(len(data)):
         for j in range(len(data[0])):
             ..
 ```
-
-
 
 ### tuple
 
@@ -223,7 +223,9 @@ i.sort(key=t.index)
 zoo = ('python', 'elephant', 'penguin')
 new_zoo = 'monkey', 'camel', zoo#不推荐这种写法
 ```
+
 使用元组：
+
 ```python
 print('All animals in new zoo are', new_zoo)#输出整个tuple
 print('Animals brought from old zoo are', new_zoo[2])
@@ -231,15 +233,19 @@ print('Animals brought from old zoo are', new_zoo[2])
 print('Last animal brought from old zoo is', new_zoo[2][2])
 #输出tuple第三个元素中的第三个元素
 ```
+
 注意:
+
 ```python
 myempty = ()#声明一个空tuple很简单
 singleton = (2 , )#声明一个元素的tuple必须按这种写法
 ```
 
 ### dictionary
-dictionary即key与value相对应形成的数据结构,有点像地址簿的姓名对应地址
+
+dictionary 即 key 与 value 相对应形成的数据结构,有点像地址簿的姓名对应地址
 使用:
+
 ```python
 ab = {
     'Swaroop': 'swaroop@swaroopch.com',
@@ -254,30 +260,34 @@ ab = dict.fromkeys(list)#只有key没有value
 ab['Guido'] = 'guido@python.org'#添加key value对
 print("Swaroop's address is", ab['Swaroop'])#使用,注意[]里只能用key
 
-for name, address in ab.items(): 
+for name, address in ab.items():
 	print('Contact {} at {}'.format(name, address))
 #使用ab中的每个元素
 
 [key : value for...]#字典推导式
-min(d,key=d.get)#求最小值的key 
+min(d,key=d.get)#求最小值的key
 ```
-注意key需要是不可变对象,value则可以是可变对象,当然也可以是不可变对象
+
+注意 key 需要是不可变对象,value 则可以是可变对象,当然也可以是不可变对象
 
 操作
 
-| 操作                          | 功能                                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| a.keys(),a.values(),a.items() | 返回key,value,或key和value对                                 |
-| a.get(key,a),a.pop(key,a)     | 若有相应的key则返回value,没有则返回a<br />其中pop返回后会删除 |
-| d.popitem()                   | 随机取出键值对以元组形式返回                                 |
-| d.clear(),del d[key]          | 删除整个或者某个                                             |
-| key in d,not in               | 判断key在不在dict中                                          |
+| 操作                          | 功能                                                                |
+| ----------------------------- | ------------------------------------------------------------------- |
+| a.keys(),a.values(),a.items() | 返回 key,value,或 key 和 value 对                                   |
+| a.get(key,a),a.pop(key,a)     | 若有相应的 key 则返回 value,没有则返回 a<br />其中 pop 返回后会删除 |
+| d.popitem()                   | 随机取出键值对以元组形式返回                                        |
+| d.clear(),del d[key]          | 删除整个或者某个                                                    |
+| key in d,not in               | 判断 key 在不在 dict 中                                             |
 
-注意`a.pop(key)`也会进行删除同时返回对应的value,两种删除方式在key不存在时都会报错
+注意`a.pop(key)`也会进行删除同时返回对应的 value,两种删除方式在 key 不存在时都会报错
+
 ### set
-集合和数学中的集合类似,是无序简单对象的collection
+
+集合和数学中的集合类似,是无序简单对象的 collection
 集合有互异性，即元素互异，每个元素都不一样
-set的元素不能是list,但可以是tuple
+set 的元素不能是 list,但可以是 tuple
+
 ```python
 ab = set(['apple','pen'])
 a = {1,3,2} #creat set
@@ -311,25 +321,31 @@ a^b#补集,即除了交集外a,b的所有元素
 ```
 
 ### reference
+
 当创建对象并利用其赋值给另一个对象时,实际两个标识符指向同一个对象:
+
 ```python
 mylist = shoplist#指向同一个
 mylist = shoplist[:]#通过全切片产生副本,指向对象不同
 ```
 
 ### 字符串
+
 用单引号或双引号或三引号指定字符串
+
 ```python
 'strings'
 "strings"
 ```
+
 注意在单引号中直接可以双引号，双引号中可用单引号，三引号前两个都可以用
 
 想使用一些特殊符号记得转义，如 \\\\
 
-注意在python中字符串不可改变
+注意在 python 中字符串不可改变
 
 更多字符串操作:
+
 ```python
 ## 这是一个字符串对象
 name = 'Swaroop'
@@ -353,13 +369,17 @@ a = 'abc def'
 c = a.split(' ') #以空格为标识把字符串分割成多部分
 ''.join(list)#无间隔连接list为字符串
 ```
+
 ## input output
 
-output一般用print,语法如下:
+output 一般用 print,语法如下:
+
 ```python
 print('strings')
 ```
+
 若要使用变量输出,可用如下语法:
+
 ```python
 age=10
 stringT='hhh'
@@ -374,31 +394,35 @@ print(message * times)
 print(item, end=' ')#end指定输出的末尾,若不指定则默认为\n
 ```
 
-format可进行一定调节设定进行输出:
+format 可进行一定调节设定进行输出:
+
 ```python
 age=10
 print('{0:.3f}'.format(age))#指定小数位为3位，注意0代表在format中的位置
 
 ## 填充下划线 (_) ，文本居中
-## 将 '___hello___' 的宽度扩充为 11 
+## 将 '___hello___' 的宽度扩充为 11
 print('{0:_^11}'.format('hello'))
 ## 用基于关键字的方法打印显示 'Swaroop wrote A Byte of Pytho
 print('{name} wrote {book}'.format(name='Swaroop', book='Python'))
 ```
 
 ## 运算符
-+-*,== >=,>> <<,&等运算符与c++中的基本相同
+
++-\*,== >=,>> <<,&等运算符与 c++中的基本相同
 需要注意的运算符如下:
 
-|运算符|功能|
-|---|---|
-|**|乘方|
-|/|除,但不是整除|
-|//|整除|
-|or and not|布尔与或非，用于判断逻辑关系，它们的顺序即运算符顺序|
+| 运算符     | 功能                                                 |
+| ---------- | ---------------------------------------------------- |
+| \*\*       | 乘方                                                 |
+| /          | 除,但不是整除                                        |
+| //         | 整除                                                 |
+| or and not | 布尔与或非，用于判断逻辑关系，它们的顺序即运算符顺序 |
 
 ## 控制流
+
 if-else 语句：
+
 ```python
 t = 3
 
@@ -410,7 +434,8 @@ else:
 	print('It\'s nothing')
 ```
 
-while语句:
+while 语句:
+
 ```python
 i = 3
 while True:
@@ -423,6 +448,7 @@ else:
 ```
 
 for 语句:
+
 ```python
 for i in range(1,5):#输出的i从1到4,循环执行四次
 	if i == 3:
@@ -431,10 +457,14 @@ for i in range(1,5):#输出的i从1到4,循环执行四次
 else:
 	print('5')#不满足for的条件时执行,若遇break则不执行
 ```
-注意range可换为字符串，则执行的次数为字符串的长度，i为字符
-range前面的1不写则是从0开始到4
+
+注意 range 可换为字符串，则执行的次数为字符串的长度，i 为字符
+range 前面的 1 不写则是从 0 开始到 4
+
 ## 函数
+
 函数定义例子:
+
 ```python
 def print_max(a, b):#也可无参数
     if a > b:
@@ -445,23 +475,25 @@ def print_max(a, b):#也可无参数
         print(b, 'is maximum')
 ```
 
-python中函数可以使用全局变量,但不能直接修改
+python 中函数可以使用全局变量,但不能直接修改
 
-在函数内定义的变量是局部变量,不会影响其他地方的同标识符的变量的值,若想让该变量成为全局变量,或想修改全局变量,使用global:
+在函数内定义的变量是局部变量,不会影响其他地方的同标识符的变量的值,若想让该变量成为全局变量,或想修改全局变量,使用 global:
 
 ```python
-def func(): 
+def func():
 	global x
 ```
 
 函数括号中的形参可有默认值:
+
 ```python
-def say(message, times=1): 
+def say(message, times=1):
 	print(message * times)
 #注意只有参数列表末尾的变量可有默认值,不可前面变量有默认值后面却没有
 ```
 
 调用函数输入参数时可指定参数输入:
+
 ```python
 def func(a, b=5, c=10):
     print('a is', a, 'and b is', b, 'and c is', c)
@@ -472,15 +504,17 @@ func(c=50, a=100)
 ```
 
 参数可为元组或字典,这样一个形参可介绍多个参数:
+
 ```python
-def total(a=5, *numbers, **phonebook): 
+def total(a=5, *numbers, **phonebook):
 	print('a', a)
 #numbers接受元组,phonebook接受字典
 ```
 
-return可和c++中一样使用,不过不用声明返回值类型
+return 可和 c++中一样使用,不过不用声明返回值类型
 
 DocStrings
+
 ```python
 def print_max(x, y):
     '''Prints the maximum of two numbers.
@@ -488,10 +522,12 @@ def print_max(x, y):
     The two values must be integers.'''
 ...
 ```
+
 DocStrings 的书写惯例是：首行首字母大写，结尾有句号；第二行为空行；第三行以后为详细的描述。
-可以通过\__doc__属性访问描述:
+可以通过\_\_doc\_\_属性访问描述:
+
 ```python
-print(print_max.__doc__)	
+print(print_max.__doc__)
 ```
 
 ### 闭包
@@ -510,8 +546,6 @@ def outer( a ):
 #其中a就是闭包
 #若想修改 需声明nonlocal b
 ```
-
-
 
 ### decorator
 
@@ -532,7 +566,7 @@ def test(a,b):
 #相当于test=log(test)
 ```
 
-decorator可带参数:
+decorator 可带参数:
 
 ```python
 def log(level):
@@ -552,7 +586,7 @@ def test():
     print("this is what I want")
 ```
 
-decorator可以为类
+decorator 可以为类
 
 ```python
 class DecorateDemo(object):
@@ -581,7 +615,7 @@ class Car:
     #特殊的类初始化函数
     def __init__(self, c):
         self.color = c #定义对象属性
-        self.__private=3#私有成员,仅可类内访问  
+        self.__private=3#私有成员,仅可类内访问
         self._protect=4#保护成员,不可被from .. import*引入
         self.__value=c
     #析构函数
@@ -608,8 +642,6 @@ class Root:
         print(Root.__total)
 ```
 
-
-
 属性
 
 ```python
@@ -619,8 +651,8 @@ class Test:
     @property
     def value(self): #只读，无法修改和删除,即只能obj.value
         return self.__value
-    
-    
+
+
 class Test:
     def __init__(self, value):
         self.__value = value
@@ -629,7 +661,7 @@ class Test:
     def __set(self, v):
         self.__value = v
     value = property(__get, __set)#可读可写
-    
+
 class Test:
     def __init__(self, value):
         self.__value = value
@@ -641,8 +673,6 @@ class Test:
         del self.__value
     value = property(__get, __set,__del)#可读可写可删除
 ```
-
-
 
 使用
 
@@ -670,8 +700,6 @@ class newCa(Car):
     def __init__(self,c):
         Car.__init__(c)
 ```
-
-
 
 ## 文件
 
@@ -706,7 +734,7 @@ with open('test.txt','r') as src, open('test_new.txt','w') as ds:
     ds.writelines(src.readlines())
 ```
 
-csv文件读写
+csv 文件读写
 
 ```python
 import csv
@@ -727,7 +755,7 @@ with open('test.csv','w',newline='') as f:
     writer.writerows(data)
 ```
 
-json文件
+json 文件
 
 ```python
 import json
@@ -757,21 +785,23 @@ for root, dir, filename in os.walk('.'):
 
 如果只想遍历一层目录下的文件,简单的使用`os.listdir`.
 
-获取文件上次修改时间用`os.path.getmtime`,返回是timestamp.用`os.path.getctime`获取创建时间(在有些系统,如unix下仍是返回修改时间).
+获取文件上次修改时间用`os.path.getmtime`,返回是 timestamp.用`os.path.getctime`获取创建时间(在有些系统,如 unix 下仍是返回修改时间).
 
 ## 模块
 
-在python中，若想实现多文件协作，可使用module（模块），模块可用python写，也可以用c写
+在 python 中，若想实现多文件协作，可使用 module（模块），模块可用 python 写，也可以用 c 写
 导入模块：
+
 ```python
 import sys#不用.py
 from math import sqrt#导入模块的一部分,一般不推荐使用避免命名冲突
 from math import*#导入模块所有部分，不过使用时不需要指定模块名
 sys.argv#使用模块中的函数或变量
 ```
+
 导入模块是一个开销比较大的事情,可通过创建字节码文件(.pyc),然后导入字节码文件得到一样的效果,并提高效率
 
-模块拥有\_\_name\_\_属性,若该属性值为  \_\_main\_\_,则说明模块是直接在执行而不是被调用
+模块拥有\_\_name\_\_属性,若该属性值为 \_\_main\_\_,则说明模块是直接在执行而不是被调用
 
 若写自己的模块,有一个属性为\_\_version\_\_,用于指定版本号
 
@@ -780,12 +810,14 @@ dir()函数返回对象里定义的一系列标识符,若对象是模块则返�
 程序包就是一个装满模块的文件夹，它有一个特殊的 `__init__.py` 文件，这个文件告诉 Python 这个文件夹是特别的，因为它装着 Python 的模块。
 
 ## pip
+
 命令行换源
+
 ```python
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-解决突然显示没有pip这个module
+解决突然显示没有 pip 这个 module
 
 ```python
  python -m ensurepip
@@ -803,23 +835,23 @@ WARNING: Ignoring invalid distribution -ip (d:\noval\program\python\lib\site-pac
 
 原因是安装异常,删掉对应文件夹~开头的文件夹即可
 
-## 库 
+## 库
 
 ### random
 
 产生随机数的库
 
-| 函数             | 功能                                                         |
-| ---------------- | ------------------------------------------------------------ |
+| 函数             | 功能                                                             |
+| ---------------- | ---------------------------------------------------------------- |
 | seed(a=None)     | 初始化随机数种子,默认为系统时间,种子相同<br />产生随机数序列相同 |
-| random()         | 产生[0,1)间的随机小数                                        |
-| randint(a,b)     | 产生[a,b]之间的整数                                          |
-| getrandbits(k)   | 产生k比特长度的随机整数                                      |
-| randrange(a,b,c) | 产生[a,b)之间以c为步数产生的序列中的随机整数                 |
-| uniform(a,b)     | 产生[a,b]之间的随机小数                                      |
-| choice(seq)      | 从序列类型随机返回一个元素                                   |
-| shuffle(seq)     | 随机打乱序列并返回                                           |
-| sample(a,k)      | 从a中随机选k个元素并返回成列表                               |
+| random()         | 产生[0,1)间的随机小数                                            |
+| randint(a,b)     | 产生[a,b]之间的整数                                              |
+| getrandbits(k)   | 产生 k 比特长度的随机整数                                        |
+| randrange(a,b,c) | 产生[a,b)之间以 c 为步数产生的序列中的随机整数                   |
+| uniform(a,b)     | 产生[a,b]之间的随机小数                                          |
+| choice(seq)      | 从序列类型随机返回一个元素                                       |
+| shuffle(seq)     | 随机打乱序列并返回                                               |
+| sample(a,k)      | 从 a 中随机选 k 个元素并返回成列表                               |
 
 ## 系统操作
 
@@ -835,22 +867,25 @@ os.path.exists('filename_or_path_and_f')
 shutil.copy('收支表 .xlsx','2021/'+f_name)
 ```
 
-## 打包成exe
+## 打包成 exe
 
-安装pyinstaller
-安装pipenv
+安装 pyinstaller
+安装 pipenv
 在某个文件夹创建虚拟环境
 
 ```cmd
 pipenv shell
 ```
-使用pip安装必须的依赖
-然后在py文件根目录下执行：
+
+使用 pip 安装必须的依赖
+然后在 py 文件根目录下执行：
 
 ```cmd
 pyinstaller -F accountbook.pyw -i t.ico
 ```
-去掉-F则会生成exe文件和多个依赖
+
+去掉-F 则会生成 exe 文件和多个依赖
 
 ## json
-json.dumps将对象转化为json字符串
+
+json.dumps 将对象转化为 json 字符串

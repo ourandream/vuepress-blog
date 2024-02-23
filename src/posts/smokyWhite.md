@@ -8,7 +8,7 @@ abbrlink: baa3d3a2
 
 因为偶然间看见这游戏的 cg，然后马上被那虚幻的美感所吸引，于是马上找到游戏体验了一下。
 
-<!--more-->
+<!-- more -->
 
 ![smokyWhite2](https://cdn.jsdelivr.net/gh/ourandream/blog_images@master/smallGal/smokyWhite2.webp)
 
